@@ -65,15 +65,16 @@ const Home: NextPage = () => {
 
         <div>
 
-          <video
-            src="https://uploads-ssl.webflow.com/62fa8255a7287e714931a2ad/62fa85a47f6f589559851bfc_web_white-transcode.mp4"
-            width="100%"
-            height="100%"
-            autoPlay
-            loop
-            muted
-            className='mt-10'
-        ></video>
+        <video
+          src="https://uploads-ssl.webflow.com/62fa8255a7287e714931a2ad/62fa85a47f6f589559851bfc_web_white-transcode.mp4"
+          width="100%"
+          height="auto"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="mt-10"
+      ></video>
         </div>
       </main>
     </div>
