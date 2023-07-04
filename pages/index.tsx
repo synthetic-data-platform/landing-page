@@ -26,18 +26,21 @@ const Home: NextPage = () => {
       <main className="w-full grid sm:grid-cols-2 mt-10 gap-10 sm:ml-40 px-4 sm:mt-16">
         
         <div className='sm:mt-16 mt-10'>
-            <h1 className="mx-auto max-w-4xl font-display text-5xl font-bold tracking-normal text-slate-900 sm:text-5xl">
+            <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-900 sm:text-5xl">
               
-            <span className="relative whitespace-nowrap text-[#6a32ee] mb-5">
+            <span className="relative whitespace-nowrap text-[#6a32ee]">
                 <span className="relative mr-2">Synthetic audio</span>
-                <br></br>
-              </span>{" "}
-              generation platform{" "}
+              </span>
               
             </h1>
 
+            <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-900 sm:text-5xl sm:mt-2">
+            generation platform
+            </h1>
+
+
             <p className="mx-auto sm:mt-5 mt-5 max-w-xl text-lg text-slate-700 leading-7">
-              Generate high quality audio data to improve AI models accuracy
+              Generate high quality audio datasets for ASR, Virtual assistants, Chatbots, and content creation.
             </p>
 
             <div className="flex space-x-4">
