@@ -29,11 +29,11 @@ class MyDocument extends Document {
           {/* Add Image here for a preview */}
           <meta
             property="og:image"
-            content="https://ik.imagekit.io/uti9laa1e/Screenshot_from_2023-06-27_02.56.54.png?updatedAt=1687814880001"
+            content="https://ik.imagekit.io/uti9laa1e/VoxLab_landing_page_-_1?updatedAt=1688507482539"
           />
           <meta
             name="twitter:image"
-            content="https://ik.imagekit.io/uti9laa1e/Screenshot_from_2023-06-27_02.56.54.png?updatedAt=1687814880001"
+            content="https://ik.imagekit.io/uti9laa1e/VoxLab_landing_page_-_1?updatedAt=1688507482539"
           />
 
           {isProd && (
