@@ -9,22 +9,22 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
           <meta
             name="description"
-            content="Free AI Powered Image Processing Tools"
+            content="Synthetic audio data generation platform"
           />
-          <meta property="og:site_name" content="imgai.co" />
+          <meta property="og:site_name" content="voxlab.co" />
           <meta
             property="og:description"
             content="Free AI Powered Image Processing Tools."
           />
-          <meta property="og:title" content="Free AI Powered Image Processing Tools" />
+          <meta property="og:title" content="Synthetic audio data generation platform" />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Free AI Powered Image Processing Tools" />
+          <meta name="twitter:title" content="Synthetic audio data generation platform" />
           <meta
             name="twitter:description"
-            content="Free AI Powered Image Processing Tools"
+            content="Synthetic audio data generation platform"
           />
           {/* Add Image here for a preview */}
           <meta
@@ -35,9 +35,6 @@ class MyDocument extends Document {
             name="twitter:image"
             content="https://ik.imagekit.io/uti9laa1e/Screenshot_from_2023-06-27_02.56.54.png?updatedAt=1687814880001"
           />
-
-          {/* For Tally: https://tally.so/forms/mDKWKE/share */}
-          <script async src="https://tally.so/widgets/embed.js"></script>
 
           {isProd && (
             <>
@@ -61,7 +58,7 @@ class MyDocument extends Document {
           )}
 
         </Head>
-        <body className="flex flex-col items-center justify-center w-full ml-3 bg-[#fbf8f4] ">
+        <body className="">
           <Main />
           <NextScript />
         </body>

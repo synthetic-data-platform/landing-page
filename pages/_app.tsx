@@ -29,7 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <ErrorBoundary fallback="There was an error while processing">
       <Component {...pageProps} />
-      <Footer />
+      {/* <Footer /> */}
       </ErrorBoundary>
     </>
   );
