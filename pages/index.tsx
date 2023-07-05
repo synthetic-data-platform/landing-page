@@ -28,25 +28,25 @@ const Home: NextPage = () => {
         <div className='sm:mt-16 mt-10'>
             <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-900 sm:text-5xl">
               
-            <span className="relative whitespace-nowrap text-[#6a32ee]">
+            <span className="relative whitespace-nowrap text-[#333]">
                 <span className="relative mr-2">Synthetic audio</span>
               </span>
               
             </h1>
 
-            <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-900 sm:text-5xl sm:mt-2">
+            <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-[#333] sm:text-5xl sm:mt-2">
             generation platform
             </h1>
 
 
-            <p className="mx-auto sm:mt-5 mt-5 max-w-xl text-lg text-slate-700 leading-7">
+            <p className="mx-auto sm:mt-5 mt-5 max-w-xl text-lg text-[#333] leading-7">
               Generate high quality audio datasets for ASR, Virtual assistants, Chatbots, and content creation.
             </p>
 
             <div className="flex space-x-4">
               
               <Link
-                className="items-center mt-7 justify-center font-medium rounded-xl focus-visible:outline-black focus:outline-none inline-flex bg-slate-200 border-2 duration-200 focus-visible:ring-black hover:bg-transparent hover:text-black lg:w-auto px-6 py-3 text-center text-black"
+                className="items-center mt-7 justify-center font-medium rounded-xl focus-visible:outline-black focus:outline-none inline-flex bg-[#333] border-2 duration-200 focus-visible:ring-black hover:bg-transparent hover:text-black lg:w-auto px-6 py-3 text-center text-white"
                 href="https://tally.so/r/m6e6EA"
                 target="_blank"
                 rel="noopener noreferrer"

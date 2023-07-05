@@ -95,7 +95,7 @@ export default function Header() {
 
             <div className="inline-flex items-center gap-2 list-none lg:ml-auto">
               <a
-                className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-black bg-slate-200 rounded-lg group focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 hover:bg-slate-50 active:bg-slate-200 active:text-accent-400 focus-visible:outline-black"
+                className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-[#333] hover:text-black rounded-lg group focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 hover:bg-slate-50 active:bg-slate-200 active:text-accent-400 focus-visible:outline-black"
                 href="https://tally.so/r/m6e6EA"
                 target="_blank"
                 rel="noopener noreferrer"
