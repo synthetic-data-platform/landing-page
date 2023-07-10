@@ -12,28 +12,28 @@ class MyDocument extends Document {
         <link rel="icon" href="/favicon.svg" />
           <meta
             name="description"
-            content="Synthetic audio data generation platform"
+            content="Enhance AI with Synthetic data"
           />
           <meta property="og:site_name" content="voxlab.co" />
           <meta
             property="og:description"
             content="Free AI Powered Image Processing Tools."
           />
-          <meta property="og:title" content="Synthetic audio data generation platform" />
+          <meta property="og:title" content="Enhance AI with Synthetic data" />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Synthetic audio data generation platform" />
+          <meta name="twitter:title" content="Enhance AI with Synthetic data" />
           <meta
             name="twitter:description"
-            content="Synthetic audio data generation platform"
+            content="Enhance AI with Synthetic data"
           />
           {/* Add Image here for a preview */}
           <meta
             property="og:image"
-            content="https://ik.imagekit.io/uti9laa1e/VoxLab_landing_page_-_1?updatedAt=1688507482539"
+            content="https://ik.imagekit.io/uti9laa1e/VoxLab_landing_page_-_2?updatedAt=1688952849312"
           />
           <meta
             name="twitter:image"
-            content="https://ik.imagekit.io/uti9laa1e/VoxLab_landing_page_-_1?updatedAt=1688507482539"
+            content="https://ik.imagekit.io/uti9laa1e/VoxLab_landing_page_-_2?updatedAt=1688952849312"
           />
 
           {isProd && (

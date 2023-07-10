@@ -18,7 +18,7 @@ const Home: NextPage = () => {
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2">
       <Head>
-      <title>VoxLab | Synthetic audio generation platform </title>
+      <title>VoxLab | Enhance AI with Synthetic data </title>
       <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -29,18 +29,18 @@ const Home: NextPage = () => {
             <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-900 sm:text-5xl">
               
             <span className="relative whitespace-nowrap text-[#333]">
-                <span className="relative mr-2">Synthetic audio</span>
+                <span className="relative mr-2">Enhance AI with</span>
               </span>
               
             </h1>
 
             <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-[#333] sm:text-5xl sm:mt-2">
-            generation platform
+            Synthetic data
             </h1>
 
 
             <p className="mx-auto sm:mt-5 mt-5 max-w-xl text-lg text-[#333] leading-7">
-              Generate high quality audio datasets for ASR, Virtual assistants, Chatbots, and content creation.
+              Generate high quality datasets for Computer Vision, ASR, Virtual assistants, Chatbots, and content creation.
             </p>
 
             <div className="flex space-x-4">
