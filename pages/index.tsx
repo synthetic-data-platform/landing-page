@@ -26,6 +26,10 @@ const Home: NextPage = () => {
       <main className="w-full grid sm:grid-cols-2 mt-10 gap-10 sm:ml-40 px-4 sm:mt-16">
         
         <div className='sm:mt-16 mt-10'>
+          <img
+                src="https://tinypixel.pythonanywhere.com/pixel.gif?page=voxlab-landing-page"
+              style={{ width: '1px', height: '1px' }}
+            />
             <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-900 sm:text-5xl">
               
             <span className="relative whitespace-nowrap text-[#333]">
