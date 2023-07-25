@@ -78,7 +78,7 @@ const Home: NextPage = () => {
         </div>
       </main>
 
-      {/* <Datasets /> */}
+      <Datasets />
     </div>
   );
 };
