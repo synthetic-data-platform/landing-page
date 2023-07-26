@@ -7,6 +7,7 @@ import Header from "../components/Header";
 import SquigglyLines from "../components/SquigglyLines";
 import Image from "next/image";
 import Datasets from "../components/datasets";
+import Features from "../components/Features";
 
 const Tools = lazy(() => import("../components/Tools"));
 
@@ -79,6 +80,7 @@ const Home: NextPage = () => {
       </main>
 
       <Datasets />
+      <Features  />
     </div>
   );
 };
