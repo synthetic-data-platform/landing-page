@@ -4,9 +4,9 @@ import Image from "next/image";
 export default function Footer() {
   return (
 
-    <footer id="footer" className="p-4 md:p-8 lg:p-10 dark:bg-gray-800">
+    <footer id="footer" className="p-4 md:p-5 lg:p-5 dark:bg-gray-800">
     <div className="mx-auto max-w-screen-xl text-center">
-      <a href="#footer" className="flex justify-center items-center text-2xl font-semibold text-gray-900 dark:text-white">
+      <a href="#footer" className="flex justify-center items-center text-2xl font-semibold text-[#333] dark:text-white">
       <Image
               alt="header text"
               src="/favicon.svg"
@@ -17,7 +17,7 @@ export default function Footer() {
           Voxlab    
       </a>
       {/* <p className="my-6 text-gray-500 dark:text-gray-400">Generate high quality datasets for Computer Vision, ASR, Virtual assistants, Chatbots, and content creation.</p> */}
-      <ul className="flex flex-wrap justify-center items-center mt-5 mb-6 text-gray-900 dark:text-white">
+      <ul className="flex flex-wrap justify-center items-center mt-5 mb-6 text-[#333] dark:text-white">
           <li>
               <a href="#" className="mr-4 hover:underline md:mr-6 ">Solutions</a>
           </li>
