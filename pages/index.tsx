@@ -8,6 +8,9 @@ import SquigglyLines from "../components/SquigglyLines";
 import Image from "next/image";
 import Datasets from "../components/datasets";
 import Features from "../components/Features";
+import CallToAction from "../components/CallToAction";
+import Footer from "../components/Footer";
+import Testimonials from "../components/Testimonials";
 
 const Tools = lazy(() => import("../components/Tools"));
 
@@ -79,8 +82,11 @@ const Home: NextPage = () => {
         </div>
       </main>
 
+      <Testimonials />
       <Datasets />
-      <Features  />
+      {/* <Features  /> */}
+      {/* <CallToAction /> */}
+      <Footer />
     </div>
   );
 };
