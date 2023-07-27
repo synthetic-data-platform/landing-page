@@ -18,8 +18,8 @@ export default function datasets(){
                         </a>
                         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">This is the largest dataset of spoken words in 10 different languages.</p>
                         <a href="https://huggingface.co/datasets/Voxlab/Synthetic-Spoken-Digit-Dataset" target="_blank" rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center rounded-xl border-2 bg-[#333] px-3 py-2 text-center font-medium text-white duration-200 hover:border-black hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto">
-                            Read more
+                            className="inline-flex items-center justify-center rounded-xl border-2 bg-[#333] px-3 py-2 text-center font-medium mt-2 text-white duration-200 hover:border-black hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto">
+                            Explore dataset
                             <svg className="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                             </svg>
