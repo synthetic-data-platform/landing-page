@@ -10,7 +10,7 @@ export default function Header() {
   }
 
   return (
-    <header className="w-full mt-5 mx-auto">
+    <header className="w-full mt-5 mx-auto bg-white rounded-3xl px-2">
       <div className="w-full mx-auto md:px-12 px-8 max-w-full">
         <div
           x-data="{ open: false }"
