@@ -19,7 +19,7 @@ export default function Footer() {
       {/* <p className="my-6 text-gray-500 dark:text-gray-400">Generate high quality datasets for Computer Vision, ASR, Virtual assistants, Chatbots, and content creation.</p> */}
       <ul className="flex flex-wrap justify-center items-center mt-5 mb-6 text-[#333] dark:text-white">
           <li>
-              <a href="#" className="mr-4 hover:underline md:mr-6 ">Solutions</a>
+              <a href="#solutions" className="mr-4 hover:underline md:mr-6 ">Solutions</a>
           </li>
           <li>
               <a href="#datasets" className="mr-4 hover:underline md:mr-6">Datasets</a>

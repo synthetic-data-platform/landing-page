@@ -4,15 +4,11 @@ import { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import Header from "../components/Header";
-import SquigglyLines from "../components/SquigglyLines";
-import Image from "next/image";
 import Datasets from "../components/datasets";
-import Features from "../components/Features";
 import CallToAction from "../components/CallToAction";
 import Footer from "../components/Footer";
 import Testimonials from "../components/Testimonials";
-
-const Tools = lazy(() => import("../components/Tools"));
+import Solutions from "../components/Solutions";
 
 import {
   ReactCompareSlider,
@@ -83,6 +79,7 @@ const Home: NextPage = () => {
       </main>
 
       <Testimonials />
+      <Solutions />
       <Datasets />
       {/* <Features  /> */}
       <CallToAction />
