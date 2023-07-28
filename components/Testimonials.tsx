@@ -15,7 +15,7 @@ export default function Testimonials() {
                   <p className="my-4">"Voxlab's collaboration with Imgai produced remarkable results in object detection. Using synthetic images of symbols and logos, the accuracy of detection models improved significantly."</p>
               </blockquote>
               <figcaption className="flex justify-center items-center space-x-3">
-                  <img className="w-9 h-9 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png" alt="profile picture" />
+                  <img className="w-9 h-9 rounded-full" src="/imgai.jpeg" alt="profile picture" />
                   <div className="space-y-0.5 font-medium dark:text-white text-left">
                       <div>Bonnie Green</div>
                       <div className="text-sm font-light text-gray-500 dark:text-gray-400">Lead Developer at Imgai</div>
