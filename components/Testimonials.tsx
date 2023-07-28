@@ -12,7 +12,7 @@ export default function Testimonials() {
           <figure className="flex flex-col rounded-3xl justify-center items-center p-8 text-center shadow-lg bg-gray-100 border-b border-gray-200 md:p-12 lg:border-r dark:bg-gray-800 dark:border-gray-700">
               <blockquote className="mx-auto mb-8 max-w-2xl text-gray-500 dark:text-gray-400">
                   {/* <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Object Detection Accuracy improved</h3> */}
-                  <p className="my-4">"Voxlab's collaboration with Imgai produced remarkable results in object detection. Using synthetic images of symbols and logos, the accuracy of detection models improved significantly."</p>
+                  <p className="my-4">"The collaboration between Voxlab and Imgai yielded impressive outcomes in object detection. By leveraging synthetic images of symbols and logos, the detection models experienced a substantial boost in accuracy."</p>
               </blockquote>
               <figcaption className="flex justify-center items-center space-x-3">
                   <img className="w-9 h-9 rounded-full" src="/imgai.jpeg" alt="profile picture" />
@@ -25,7 +25,7 @@ export default function Testimonials() {
           <figure className="flex flex-col justify-center rounded-3xl items-center p-8 text-center shadow-lg bg-gray-100 border-b border-gray-200 md:p-12 dark:bg-gray-800 dark:border-gray-700">
               <blockquote className="mx-auto mb-8 max-w-2xl text-gray-500 dark:text-gray-400">
                   {/* <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Solid foundation for any project</h3> */}
-                  <p className="my-4">"Voxlab generated synthetic audio clips of person names, company names, places, etc. Which helped us improve our Personal Identity Information models accuracy.</p>
+                  <p className="my-4">"Voxlab created artificial audio clips containing names of individuals, company names, places, and more. This contribution played a vital role in enhancing the accuracy of our Personal Identity Information models.</p>
               </blockquote>
               <figcaption className="flex justify-center items-center space-x-3">
                   <img className="w-9 h-9 rounded-full" src="/privacy-ai.jpeg" alt="profile picture" />
