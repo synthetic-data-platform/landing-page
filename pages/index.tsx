@@ -45,6 +45,9 @@ const Home: NextPage = () => {
             assistants, Chatbots, and content creation.
           </p>
 
+          <div className=" grid-cols-3 mt-3 w-full md:w-[55%] lg:w-full mx-auto">
+        </div> 
+
           <div className="flex space-x-4">
             <Link
               className="mt-7 inline-flex items-center justify-center rounded-xl border-2 bg-[#333] px-6 py-3 text-center font-medium text-white duration-200 hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto"
@@ -62,7 +65,10 @@ const Home: NextPage = () => {
               Explore Synthetic Datasets
             </Link>
           </div>
+
+          <li className="mt-5 ml-2">commercial use &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; •  GDPR compliance  </li>
         </div>
+        
 
         <div>
           <video
