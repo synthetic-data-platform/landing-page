@@ -13,6 +13,9 @@ export default function datasets(){
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-10">
 
                     <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-3xl shadow-lg dark:bg-gray-800 dark:border-gray-700">
+                    
+                        {/* <span className="bg-blue-300 text-blue-800 text-xs font-medium mr-2 px-2.5 py-1 rounded dark:bg-blue-900 dark:text-blue-300">Audio</span> */}
+                        
                         <a>
                             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Audio Digit Dataset</h5>
                         </a>

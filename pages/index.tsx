@@ -66,7 +66,7 @@ const Home: NextPage = () => {
             </Link>
           </div>
 
-          <li className="mt-5 ml-2">commercial use &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; •  GDPR compliance  </li>
+          {/* <li className="mt-5 ml-2">commercial use &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; •  GDPR compliance  </li> */}
         </div>
         
 
