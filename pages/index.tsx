@@ -9,6 +9,7 @@ import CallToAction from "../components/CallToAction";
 import Footer from "../components/Footer";
 import Testimonials from "../components/Testimonials";
 import Solutions from "../components/Solutions";
+import TabsTest from "../components/TabsTest";
 
 import {
   ReactCompareSlider,
@@ -87,6 +88,7 @@ const Home: NextPage = () => {
       <Testimonials />
       <Solutions />
       <Datasets />
+      {/* <TabsTest /> */}
       {/* <Features  /> */}
       <CallToAction />
       <Footer />
