@@ -86,8 +86,8 @@ const Home: NextPage = () => {
       </main>
 
       <Testimonials />
-      <Solutions />
       <Datasets />
+      <Solutions />
       {/* <TabsTest /> */}
       {/* <Features  /> */}
       <CallToAction />

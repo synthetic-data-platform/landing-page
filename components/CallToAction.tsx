@@ -5,7 +5,7 @@ export default function CallToAction() {
   return (     
     <section className="">
         <div className="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-24">
-            <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-[#333] md:text-4xl lg:text-5xl">Accelerate your growth with synthetic data</h1>
+            <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-[#333] md:text-4xl lg:text-5xl">Boost AI Performance with Synthetic Data</h1>
             <p className="mb-8 text-lg font-normal text-[#333] lg:text-xl sm:px-16 lg:px-48">Voxlab is pioneering in generating synthetic dataset. It is cheap and fast to generate synthetic dataset as compared to collecting real world dataset. Contact us to see how we can help you.</p>
             <div className="flex space-x-4 items-center justify-center">
             <Link
