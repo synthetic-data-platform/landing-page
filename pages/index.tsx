@@ -20,7 +20,7 @@ const Home: NextPage = () => {
   return (
     <div className="mx-auto flex max-w-6xl flex-col items-center justify-center py-2">
       <Head>
-        <title>VoxLab | Enhance AI with Synthetic data </title>
+        <title>VoxLab | Contact Center AI </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -33,13 +33,13 @@ const Home: NextPage = () => {
           />
           <h1 className="font-display mx-auto max-w-4xl text-4xl font-bold tracking-normal text-slate-900 sm:text-5xl">
             <span className="relative whitespace-nowrap text-[#333]">
-              <span className="relative mr-2">Enhance AI with</span>
+              <span className="relative mr-2">Contact Center AI</span>
             </span>
           </h1>
 
-          <h1 className="font-display mx-auto max-w-4xl text-4xl font-bold tracking-normal text-[#333] sm:mt-2 sm:text-5xl">
+          {/* <h1 className="font-display mx-auto max-w-4xl text-4xl font-bold tracking-normal text-[#333] sm:mt-2 sm:text-5xl">
             Synthetic data
-          </h1>
+          </h1> */}
 
           <p className="mx-auto mt-5 max-w-xl text-lg leading-7 text-[#333] sm:mt-5">
             Generate high quality datasets for Computer Vision, ASR, Virtual
@@ -63,7 +63,7 @@ const Home: NextPage = () => {
               className="mt-7 inline-flex items-center justify-center rounded-xl border-2 bg-[#6a32ee] px-6 py-3 text-center font-medium text-white duration-200 hover:border-black hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto"
               href="#datasets"
             >
-              Explore Synthetic Datasets
+              Schedule a Call
             </Link>
           </div>
 
@@ -85,9 +85,9 @@ const Home: NextPage = () => {
         </div>
       </main>
 
-      <Testimonials />
+      {/* <Testimonials /> */}
       <Datasets />
-      <Solutions />
+      {/* <Solutions /> */}
       {/* <TabsTest /> */}
       {/* <Features  /> */}
       <CallToAction />
