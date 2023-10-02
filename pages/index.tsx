@@ -41,9 +41,8 @@ const Home: NextPage = () => {
             Synthetic data
           </h1> */}
 
-          <p className="mx-auto mt-5 max-w-xl text-lg leading-7 text-[#333] sm:mt-5">
-            Generate high quality datasets for Computer Vision, ASR, Virtual
-            assistants, Chatbots, and content creation.
+          <p className="mx-auto mt-5 max-w-xl text-xl leading-7 text-[#333] sm:mt-5 whitespace-wrap">
+          Transform contact center customer experience with generative AI.
           </p>
 
           <div className=" grid-cols-3 mt-3 w-full md:w-[55%] lg:w-full mx-auto">
@@ -86,12 +85,12 @@ const Home: NextPage = () => {
       </main>
 
       {/* <Testimonials /> */}
-      <Datasets />
+      {/* <Datasets /> */}
       {/* <Solutions /> */}
       {/* <TabsTest /> */}
       {/* <Features  /> */}
-      <CallToAction />
-      <Footer />
+      {/* <CallToAction /> */}
+      {/* <Footer /> */}
     </div>
   );
 };
