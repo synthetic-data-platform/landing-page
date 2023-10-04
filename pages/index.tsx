@@ -42,7 +42,8 @@ const Home: NextPage = () => {
           </h1> */}
 
           <p className="mx-auto mt-5 max-w-xl text-xl leading-7 text-[#333] sm:mt-5 whitespace-wrap">
-          Transform contact center customer experience with generative AI.
+          {/* Transform contact center customer experience with generative AI. */}
+          Turn your conversations into actional insights with the help of Generative AI.
           </p>
 
           <div className=" grid-cols-3 mt-3 w-full md:w-[55%] lg:w-full mx-auto">
