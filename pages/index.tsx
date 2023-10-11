@@ -10,6 +10,7 @@ import Footer from "../components/Footer";
 import Testimonials from "../components/Testimonials";
 import Solutions from "../components/Solutions";
 import TabsTest from "../components/TabsTest";
+import Features from "../components/Features";
 
 import {
   ReactCompareSlider,
@@ -86,7 +87,7 @@ const Home: NextPage = () => {
       </main>
 
       {/* <Testimonials /> */}
-      {/* <Datasets /> */}
+      <Datasets />
       {/* <Solutions /> */}
       {/* <TabsTest /> */}
       {/* <Features  /> */}

@@ -5,14 +5,18 @@ export default function datasets(){
         >
             <div className="mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="mx-auto md:text-center">
-                    <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-[#333] sm:text-5xl flex items-center justify-center whitespace-wrap">
+                    {/* <h1 className="mx-auto max-w-4xl font-display text-3xl font-bold tracking-normal text-[#333] sm:text-5xl flex items-center justify-center whitespace-wrap">
                         Solutions we provide
-                    </h1>
+                    </h1> */}
+
+                    <h1 className="mb-4 text-3xl text-[#333] font-extrabold leading-none tracking-tight md:text-5xl lg:text-5xl dark:text-white">Solutions we provide</h1>
+                    <p className="mb-6 text-lg font-normal text-[#333] lg:text-lg sm:px-16 xl:px-48">Improve Customer services with Generative AI, that understands your customer needs and interacts with your agents.</p>
+
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-10">
 
-                    <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-3xl shadow-lg dark:bg-gray-800 dark:border-gray-700">
+                    <div className="max-w-sm p-6 border border-gray-100 rounded-2xl shadow-md dark:bg-gray-800 dark:border-gray-700">
                         
                         {/* <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-1 rounded dark:bg-blue-900 dark:text-blue-300">#Image</span>
                         <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-1 rounded dark:bg-blue-900 dark:text-blue-300">#medical</span> */}
@@ -30,7 +34,7 @@ export default function datasets(){
                         </a> */}
                     </div>
 
-                    <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-3xl shadow-lg dark:bg-gray-800 dark:border-gray-700">
+                    <div className="max-w-sm p-6 border border-gray-100 rounded-2xl shadow-md dark:bg-gray-800 dark:border-gray-700">
                     
                         {/* <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-1 rounded dark:bg-blue-900 dark:text-blue-300">#Audio</span>
                         <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-1 rounded dark:bg-blue-900 dark:text-blue-300">#ASR</span> */}
@@ -50,7 +54,7 @@ export default function datasets(){
 
                     
 
-                    <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-3xl shadow-lg dark:bg-gray-800 dark:border-gray-700">
+                    <div className="max-w-sm p-6 border border-gray-100 rounded-2xl shadow-md dark:bg-gray-800 dark:border-gray-700">
                         
                         {/* <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-1 rounded dark:bg-blue-900 dark:text-blue-300">In Progress</span> */}
 
@@ -71,7 +75,7 @@ export default function datasets(){
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-10">
 
-                    <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-3xl shadow-lg dark:bg-gray-800 dark:border-gray-700">
+                    <div className="max-w-sm p-6 border border-gray-100 rounded-2xl shadow-md dark:bg-gray-800 dark:border-gray-700">
                         
                         {/* <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-1 rounded dark:bg-blue-900 dark:text-blue-300">In Progress</span> */}
 
@@ -88,7 +92,7 @@ export default function datasets(){
                         </a> */}
                     </div>
 
-                    <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-3xl shadow-lg dark:bg-gray-800 dark:border-gray-700">
+                    <div className="max-w-sm p-6 border border-gray-100 rounded-2xl shadow-md dark:bg-gray-800 dark:border-gray-700">
                         {/* <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-1 rounded dark:bg-blue-900 dark:text-blue-300">In Progress</span> */}
                         
                         <a>
@@ -104,7 +108,7 @@ export default function datasets(){
                         </a> */}
                     </div>
 
-                    <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-3xl shadow-lg dark:bg-gray-800 dark:border-gray-700">
+                    <div className="max-w-sm p-6 border border-gray-100 rounded-2xl shadow-md dark:bg-gray-800 dark:border-gray-700">
                        
                         {/* <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-1 rounded dark:bg-blue-900 dark:text-blue-300">In Progress</span> */}
 
