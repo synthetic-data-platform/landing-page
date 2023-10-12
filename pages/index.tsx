@@ -92,7 +92,7 @@ const Home: NextPage = () => {
       {/* <TabsTest /> */}
       {/* <Features  /> */}
       {/* <CallToAction /> */}
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
