@@ -10,20 +10,20 @@ const Footer = lazy(() => import('../components/Footer'));
 
 function MyApp({ Component, pageProps }: AppProps) {
 
-  // Integrate page tracking for google analytics
+  // // Integrate page tracking for google analytics
 
-  const router = useRouter();
-  useEffect(() => {
-    const handleRouteChange = (url: any) => {
-      window.gtag('config', process.env.NEXT_PUBLIC_GA_ID as string, {
-        page_path: url,
-      });
-    }
-    router.events.on('routeChangeComplete', handleRouteChange);
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    }
-  }, [router.events]);
+  // const router = useRouter();
+  // useEffect(() => {
+  //   const handleRouteChange = (url: any) => {
+  //     window.gtag('config', process.env.NEXT_PUBLIC_GA_ID as string, {
+  //       page_path: url,
+  //     });
+  //   }
+  //   router.events.on('routeChangeComplete', handleRouteChange);
+  //   return () => {
+  //     router.events.off('routeChangeComplete', handleRouteChange);
+  //   }
+  // }, [router.events]);
   
   return (
     <>

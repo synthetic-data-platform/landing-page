@@ -28,10 +28,6 @@ const Home: NextPage = () => {
       <Header />
       <main className="mt-10 grid w-full gap-10 px-4 sm:ml-40 sm:mt-16 sm:grid-cols-2">
         <div className="mt-10 sm:mt-16">
-          <img
-            src="https://tinypixel.pythonanywhere.com/pixel.gif?page=voxlab-landing-page"
-            style={{ width: "1px", height: "1px" }}
-          />
           <h1 className="font-display mx-auto max-w-4xl text-4xl font-bold tracking-normal text-slate-900 sm:text-5xl">
             <span className="relative whitespace-nowrap text-[#333]">
               <span className="relative mr-2">Contact Center AI</span>
@@ -62,9 +58,9 @@ const Home: NextPage = () => {
 
             <Link
               className="mt-7 inline-flex items-center justify-center rounded-xl border-2 bg-[#6a32ee] px-6 py-3 text-center font-medium text-white duration-200 hover:border-black hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto"
-              href="#datasets"
+              href="/playground"
             >
-              Schedule a Call
+              Playground
             </Link>
           </div>
 
