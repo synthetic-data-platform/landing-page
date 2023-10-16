@@ -53,20 +53,47 @@
 
 
 import React,{ useState, useEffect }  from 'react';
+import axios from 'axios';
 
 function App() {
   const [filebase64,setFileBase64] = useState<string>("")
+  const [apiResponse, setApiResponse] = useState<string | null>(null);
+  const [blobData, setBlobData] = useState<Blob | null>(null);
+
 
   function formSubmit(e: any) {
     e.preventDefault();
-    // Submit your form with the filebase64 as 
-    // one of your fields
-    console.log({filebase64})
-    // alert("here you'd submit the form using\n the filebase64 like any other field")
+
+    if (!blobData) {
+      console.error("No audio file selected.");
+      
+    }
+
+    console.log("Blob data: " + typeof blobData);
+
+    const formData = new FormData();
+    if (blobData) {
+      formData.append('audioBlob', blobData);
+    }
+
+    axios.post('https://asia-apiforall.cyclic.cloud/asr', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+      .then((response) => {
+        setApiResponse(response.data.response.transcript);
+        console.log("API Response:", response.data.response.transcript);
+      })
+      .catch((error) => {
+        console.error("API Error:", error);
+      });
+
   }
 
+
   // The Magic all happens here.
-  function convertFile(files: FileList|null) {
+  function convertFileToBase(files: FileList|null) {
     if (files) {
       const fileRef = files[0] || ""
       const fileType: string= fileRef.type || ""
@@ -79,6 +106,55 @@ function App() {
       }
     }
   }
+
+
+  function convertFile(files: FileList | null) {
+    if (files) {
+      convertFileToBase(files);
+      const fileRef = files[0];
+      const reader = new FileReader();
+  
+      reader.onload = (ev) => {
+        if (ev.target) {
+          const arrayBuffer = ev.target.result as ArrayBuffer;
+          const blob = new Blob([arrayBuffer], { type: fileRef.type });
+          setBlobData(blob);
+        } else {
+          console.error("Failed to read the file.");
+        }
+      };
+  
+      reader.readAsArrayBuffer(fileRef);
+    }
+  }
+  
+// Function to format the text with line breaks
+const formatTextWithLineBreaks = (text: string) => {
+  // Split the text into lines
+  const lines = text.split(/\n/);
+  
+  // Format the lines to include line breaks after each "Speaker X:" line
+  const formattedLines = [];
+  let currentSpeaker = null;
+
+  for (const line of lines) {
+    const match = line.match(/Speaker (\d+): (.+)/);
+    if (match) {
+      // Found a new speaker, add line break if it's not the first speaker
+      if (currentSpeaker !== null) {
+        formattedLines.push('');
+      }
+      currentSpeaker = match[0];
+      formattedLines.push(line);
+    } else {
+      // Add the line to the current speaker's dialog
+      formattedLines.push(line);
+    }
+  }
+
+  // Join the formatted lines with line breaks
+  return formattedLines.join('\n');
+}
 
 
   return (
@@ -101,17 +177,16 @@ function App() {
                     
                 </label>
             </div>
-          { filebase64 &&
+          { blobData &&
 
             <div className='flex items-center justify-center flex-col'>
 
-            {(filebase64.indexOf("video/") > -1)  && 
-            <video controls >
+             {(filebase64.indexOf("video/") > -1)  && 
+            <video controls className='mt-10 block w-full max-w-md mx-auto'>
               <source src={filebase64} />
             </video>
             }
 
-            {/* if it's a audio (music, sound) */}
               {(filebase64.indexOf("audio/") > -1)  && 
               <audio controls className='mt-10 block w-full max-w-md mx-auto'>
                 <source src={filebase64} />
@@ -126,6 +201,11 @@ function App() {
             </div>
           }
         </form>
+
+        {apiResponse && 
+          <div>
+            <p>{formatTextWithLineBreaks(apiResponse)}</p>
+          </div>}
       </header>
     </div>
   );
