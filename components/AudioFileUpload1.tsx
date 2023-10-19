@@ -59,6 +59,37 @@ function App() {
   const [filebase64,setFileBase64] = useState<string>("")
   const [apiResponse, setApiResponse] = useState<string | null>(null);
   const [blobData, setBlobData] = useState<Blob | null>(null);
+  const [llmResponse, setLlmResponse] = useState<string | null>(null);
+  const [llmerror, setLlmError] = useState(false);
+
+  function llmRequestResponse(data: { chat_message: string, conversation: string | null }) {
+
+    if (process.env.NEXT_PUBLIC_LLM_URL){
+      const llmApiUrl = process.env.NEXT_PUBLIC_LLM_URL;
+      setLlmError(false); // Reset error state
+      
+      try {
+        axios.post(llmApiUrl, data)
+          .then((response) => {
+            if (response.status === 200) {
+              console.log("LLM Response: ", response.data);
+              setLlmResponse(response.data.response);
+            } else {
+              setLlmError(true); // Set error state to true
+              console.error(`Request failed with status code ${response.status}`);
+              console.log(response.data);
+            }
+          })
+          .catch((error) => {
+            setLlmError(true); // Set error state to true
+            console.error(`An error occurred: ${error}`);
+          });
+      } catch (error) {
+        setLlmError(true); // Set error state to true
+        console.error(`An error occurred: ${error}`);
+      }}
+
+  }
 
 
   function formSubmit(e: any) {
@@ -76,18 +107,28 @@ function App() {
       formData.append('audioBlob', blobData);
     }
 
-    axios.post('https://asia-apiforall.cyclic.cloud/asr', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    })
-      .then((response) => {
-        setApiResponse(response.data.response.transcript);
-        console.log("API Response:", response.data.response.transcript);
+    if (process.env.NEXT_PUBLIC_ASR_URL){
+      const asr_url = process.env.NEXT_PUBLIC_ASR_URL;
+      axios.post(asr_url, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       })
-      .catch((error) => {
-        console.error("API Error:", error);
-      });
+        .then((response) => {
+          const transcript = response.data.response.transcript
+          setApiResponse(transcript);
+          const llm_data = {
+            chat_message : "Summarise the conversation between customer and agent.",
+            conversation: transcript
+          }
+
+          llmRequestResponse(llm_data)
+
+          console.log("API Response:", response.data.response.transcript);
+        })
+        .catch((error) => {
+          console.error("API Error:", error);
+        });}
 
   }
 
@@ -204,8 +245,16 @@ const formatTextWithLineBreaks = (text: string) => {
 
         {apiResponse && 
           <div>
+            <h1>ASR Transcript: </h1>
             <p>{formatTextWithLineBreaks(apiResponse)}</p>
           </div>}
+
+        {llmResponse && 
+          <div>
+            <h1>LLM summary</h1>
+            <p>{llmResponse}</p>
+          </div>
+        }
       </header>
     </div>
   );
