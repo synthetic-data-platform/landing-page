@@ -62,18 +62,28 @@ function App() {
   const [llmResponse, setLlmResponse] = useState<string | null>(null);
   const [llmerror, setLlmError] = useState(false);
 
-  function llmRequestResponse(data: { chat_message: string, conversation: string | null }) {
+  function llmRequestResponse(data: { chat_message: string, conversation: string }) {
 
     if (process.env.NEXT_PUBLIC_LLM_URL){
+
+      const formData = new FormData();
+      formData.append('chat_message', data.chat_message);
+      formData.append('conversation', data.conversation);
+  
       const llmApiUrl = process.env.NEXT_PUBLIC_LLM_URL;
       setLlmError(false); // Reset error state
       
+      console.log("data: ",formData)
       try {
-        axios.post(llmApiUrl, data)
+        axios.post(llmApiUrl, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
           .then((response) => {
             if (response.status === 200) {
               console.log("LLM Response: ", response.data);
-              setLlmResponse(response.data.response);
+              setLlmResponse(response.data);
             } else {
               setLlmError(true); // Set error state to true
               console.error(`Request failed with status code ${response.status}`);
