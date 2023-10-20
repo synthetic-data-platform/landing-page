@@ -54,6 +54,8 @@
 
 import React,{ useState, useEffect }  from 'react';
 import axios from 'axios';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 function App() {
   const [filebase64,setFileBase64] = useState<string>("")
@@ -61,6 +63,10 @@ function App() {
   const [blobData, setBlobData] = useState<Blob | null>(null);
   const [llmResponse, setLlmResponse] = useState<string | null>(null);
   const [llmerror, setLlmError] = useState(false);
+  const [uploadUi, setuploadUi] = useState(true);
+  const [asrLoading, setasrLoading] = useState(true);
+  const [llmLoading, setllmLoading] = useState(true);
+  const [nextUiLoading, setnextUiLoading] = useState(false);
 
   function llmRequestResponse(data: { chat_message: string, conversation: string }) {
 
@@ -84,6 +90,7 @@ function App() {
             if (response.status === 200) {
               console.log("LLM Response: ", response.data);
               setLlmResponse(response.data);
+              setllmLoading(false);
             } else {
               setLlmError(true); // Set error state to true
               console.error(`Request failed with status code ${response.status}`);
@@ -109,7 +116,8 @@ function App() {
       console.error("No audio file selected.");
       
     }
-
+    setuploadUi(false);
+    setnextUiLoading(true);
     console.log("Blob data: " + typeof blobData);
 
     const formData = new FormData();
@@ -127,6 +135,7 @@ function App() {
         .then((response) => {
           const transcript = response.data.response.transcript
           setApiResponse(transcript);
+          setasrLoading(false);
           const llm_data = {
             chat_message : "Summarise the conversation between customer and agent.",
             conversation: transcript
@@ -211,7 +220,10 @@ const formatTextWithLineBreaks = (text: string) => {
   return (
     <div className="App">
       <header className="">
-        Start By Uploading Audio Files
+        
+        {uploadUi &&
+        <div>
+          <h1 className='text-lg'>Start by Uploading audio file</h1>
         <form onSubmit={formSubmit} className='mt-4'>
 
             <div className="flex items-center justify-center">
@@ -252,17 +264,30 @@ const formatTextWithLineBreaks = (text: string) => {
             </div>
           }
         </form>
+        </div>
+        }
 
-        {apiResponse && 
+        { !nextUiLoading &&
           <div>
-            <h1>ASR Transcript: </h1>
-            <p>{formatTextWithLineBreaks(apiResponse)}</p>
-          </div>}
+            {asrLoading && 
+            <Skeleton count={10}/>
+            }
 
-        {llmResponse && 
-          <div>
-            <h1>LLM summary</h1>
-            <p>{llmResponse}</p>
+            {apiResponse &&
+              <div>
+                <h1>ASR Transcript: </h1>
+                <p>{formatTextWithLineBreaks(apiResponse)}</p>
+              </div>}
+            {llmLoading && 
+              <Skeleton count={5}/>
+            }
+
+            {llmResponse && 
+              <div>
+                <h1>LLM summary</h1>
+                <p>{llmResponse}</p>
+              </div>
+            }
           </div>
         }
       </header>
