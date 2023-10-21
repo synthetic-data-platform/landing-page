@@ -181,7 +181,7 @@ export default function ImgEnhancement(){
     
             <Header />
 
-            <main className="flex flex-1 px-4 mt-20 sm:mb-20 mb-8 sm:flex-row flex-col max-w-6xl md:text-center realtive">
+            <main className="flex  px-4 mt-20 sm:mb-20 mb-8 sm:flex-row flex-col max-w-7xl md:text-center realtive">
             
                 <div className="realtive">
 
@@ -264,7 +264,7 @@ export default function ImgEnhancement(){
                         </div>
                         }
 
-                    <div className="">
+                        <div className="">
 
                         { blobData && !uploadUi &&
 
@@ -286,111 +286,145 @@ export default function ImgEnhancement(){
                         }
 
                         { !uploadUi &&
-                            <div className="grid lg:grid-cols-2 gap-5 sm:grid-rows-2">
-                                <div>
-                                    {asrLoading && 
-                                    <Skeleton count={10}/>
-                                    }
-
-                                    {apiResponse &&
-                                    <div>
-                                        <h1 className="text-xl font-bold">ASR Transcript: </h1>
-                                        <p className="text-left mt-5">{formatTextWithLineBreaks(apiResponse)}</p>
+                            <div className="">
+                                <div className="grid lg:grid-cols-2 gap-20 sm:grid-rows-2">
                                     
-                                    </div>
-                                    }
-                                </div>
-
-                                <div>
-
-                                    {asrLoading && 
+                                    <div>
+                                        {asrLoading && 
                                         <Skeleton count={10}/>
-                                    }
+                                        }
 
-                                    {apiResponse &&
-                                        <div className="realtive">
-                                        {/* <h1 className="text-xl font-bold mb-5">LLM: </h1> */}
+                                        {apiResponse &&
+                                        <div>
+                                            <h1 className="text-xl font-bold">ASR Transcript: </h1>
+                                            <p className="text-left mt-5">{formatTextWithLineBreaks(apiResponse)}</p>
+                                        
+                                        </div>
+                                        }
+                                    </div>
 
-                                        <div className="md:mt-0 mt-10">
-                                            {/* <button className="w-[100px] border-[#626365]">Summary</button>
-                                            <button>Sentiment</button> */}
-                                            <input
-                                                type={'search'}
-                                                name='reset'
-                                                className="rounded-xl border focus:border-blue-500 border-[#626365] bg-[#fff] max-w-[500px]"
-                                                
-                                                onChange={(e) => setLlmPrompt(e.target.value)}
-                                                onKeyDown={(e) => {
+                                    <div>
+
+                                        {asrLoading && 
+                                            <Skeleton count={10}/>
+                                        }
+
+                                        {apiResponse &&
+                                            <div className="realtive">
+                                            {/* <h1 className="text-xl font-bold mb-5">LLM: </h1> */}
+
+                                            <div className="md:mt-0 mt-10 flex ">
+                                                {/* <button className="w-[100px] border-[#626365]">Summary</button>
+                                                <button>Sentiment</button> */}
+                                                <input
+                                                    type={'search'}
+                                                    name='reset'
+                                                    className="rounded-xl border focus:border-blue-500 border-[#626365] bg-[#fff] max-w-[500px]"
                                                     
-                                                    if (e.key !== "Enter") {
-                                                        return;
-                                                    }
-                                                    const llmData = {
-                                                    chat_message: (e.target as HTMLInputElement).value,
-                                                    conversation: apiResponse,
-                                                    };
-                                                    llmRequestResponse(llmData);
-                                                }}
-                                                placeholder="Ask me something..."
-                                            />
-                                        </div>
-                                        <div className="flex mt-3 md:flex-row flex-col">
-                                            <h1 className="mr-4 mt-1 text-blue-500 md:mb-0 mb-2">Suggestions: </h1>
-                                            <button 
-                                                className="text-gray-900 md:mb-0 mb-2 bg-white rounded-lg border border-blue-200 py-1 px-2 hover:bg-gray-100 hover:text-blue-500 focus:ring-4 focus:ring-gray-200 mr-4 max-w-fit"
-                                                onClick={(e) => {
-                                                    const llmData = {
-                                                    chat_message: "Generate the summary, summary should be who was customer and who was agent, then what was customer asking for, how did agent respond to it and was customer satisfied with the agent",
-                                                    conversation: apiResponse,
-                                                    };
-                                                    llmRequestResponse(llmData);
-                                                }}
-                                                >
-                                                    Summary
-                                            </button>
+                                                    onChange={(e) => setLlmPrompt(e.target.value)}
+                                                    onKeyDown={(e) => {
+                                                        
+                                                        if (e.key !== "Enter") {
+                                                            return;
+                                                        }
+                                                        const llmData = {
+                                                        chat_message: (e.target as HTMLInputElement).value,
+                                                        conversation: apiResponse,
+                                                        };
+                                                        llmRequestResponse(llmData);
+                                                    }}
+                                                    placeholder="Ask me something..."
+                                                />
+                                            </div>
+                                            <div className="flex mt-3 md:flex-row flex-col text-sm font-medium">
+                                                {/* <h1 className="mr-4 mt-1 text-blue-500 md:mb-0 mb-2">Suggestions: </h1> */}
+                                                <button 
+                                                    className="text-gray-900 md:mb-0 mb-2 bg-white rounded-lg border border-blue-200 py-1 px-2 hover:bg-gray-100 hover:text-blue-500 focus:ring-4 focus:ring-gray-200 mr-4 max-w-fit"
+                                                    onClick={(e) => {
+                                                        const llmData = {
+                                                        chat_message: "Generate the summary, summary should be who was customer and who was agent, then what was customer asking for, how did agent respond to it and was customer satisfied with the agent",
+                                                        conversation: apiResponse,
+                                                        };
+                                                        llmRequestResponse(llmData);
+                                                    }}
+                                                    >
+                                                        Summary of conversation 
+                                                </button>
 
-                                            <button 
-                                                className="text-gray-900 md:mb-0 mb-2 bg-white rounded-lg border border-blue-200 py-1 px-2 hover:bg-gray-100 hover:text-blue-500 focus:ring-4 focus:ring-gray-200 mr-4 max-w-fit"
-                                                onClick={(e) => {
-                                                    const llmData = {
-                                                    chat_message: "Was customer satisfied with agent information, answer it in yes or no and reason",
-                                                    conversation: apiResponse,
-                                                    };
-                                                    llmRequestResponse(llmData);
-                                                }}
-                                                >
-                                                    Customer Satisfaction
-                                            </button>
+                                                <button 
+                                                    className="text-gray-900 md:mb-0 mb-2 bg-white rounded-lg border border-blue-200 py-1 px-2 hover:bg-gray-100 hover:text-blue-500 focus:ring-4 focus:ring-gray-200 mr-4 max-w-fit"
+                                                    onClick={(e) => {
+                                                        const llmData = {
+                                                        chat_message: "Was customer satisfied with agent information, answer it in yes or no and reason",
+                                                        conversation: apiResponse,
+                                                        };
+                                                        llmRequestResponse(llmData);
+                                                    }}
+                                                    >
+                                                        Customer Satisfaction
+                                                </button>
 
-                                            <button 
-                                                className="text-gray-900  bg-white rounded-lg border border-blue-200 py-1 px-2 hover:bg-gray-100 hover:text-blue-500 focus:ring-4 focus:ring-gray-200 max-w-fit"
-                                                onClick={(e) => {
-                                                    const llmData = {
-                                                    chat_message: "What was the sentiment of the overall conversation. Also give sentiment of agent and customer seprately",
-                                                    conversation: apiResponse,
-                                                    };
-                                                    llmRequestResponse(llmData);
-                                                }}
-                                                >
-                                                    Sentiment
-                                            </button>
-                                        </div>
-                                    </div>}
+                                                <button 
+                                                    className="text-gray-900 md:mb-0 mb-2 bg-white rounded-lg border border-blue-200 py-1 px-2 hover:bg-gray-100 hover:text-blue-500 focus:ring-4 focus:ring-gray-200 mr-4 max-w-fit"
+                                                    onClick={(e) => {
+                                                        const llmData = {
+                                                        chat_message: "Give me a proper report on what was the sentiment of customer and agent, what is the overall sentiment of a entire conversation. Give the sentiment in dictionary format like this {speaker0: '', speaker1: ''}",
+                                                        conversation: apiResponse,
+                                                        };
+                                                        llmRequestResponse(llmData);
+                                                    }}
+                                                    >
+                                                        Conversation Sentiment
+                                                </button>
 
-                                    {llmLoading &&
-                                        <div className="mt-5">
-                                            <Skeleton count={5}/>
-                                        </div>
-                                    }
+                                            </div>
 
-                                    {!llmLoading && 
-                                    <>  
-                                        <p className="mt-5 text-left">{llmResponse}</p>
-                                    </>
-                                    }
+                                            <div className="flex mt-3 md:flex-row flex-col text-sm font-medium">
+                                                {/* <h1 className="mr-4 mt-1 text-blue-500 md:mb-0 mb-2">Suggestions: </h1> */}
+                                                <button 
+                                                    className="text-gray-900 md:mb-0 mb-2 bg-white rounded-lg border border-blue-200 py-1 px-2 hover:bg-gray-100 hover:text-blue-500 focus:ring-4 focus:ring-gray-200 mr-4 max-w-fit"
+                                                    onClick={(e) => {
+                                                        const llmData = {
+                                                        chat_message: "What are the changes that this customer will turn into paying customer or this customer will come back",
+                                                        conversation: apiResponse,
+                                                        };
+                                                        llmRequestResponse(llmData);
+                                                    }}
+                                                    >
+                                                        Customer turnover chances
+                                                </button>
+
+                                                <button 
+                                                    className="text-gray-900 md:mb-0 mb-2 bg-white rounded-lg border border-blue-200 py-1 px-2 hover:bg-gray-100 hover:text-blue-500 focus:ring-4 focus:ring-gray-200 mr-4 w-fit"
+                                                    onClick={(e) => {
+                                                        const llmData = {
+                                                        chat_message: "Extract the conversation topic between speakers",
+                                                        conversation: apiResponse,
+                                                        };
+                                                        llmRequestResponse(llmData);
+                                                    }}
+                                                    >
+                                                        Conversation topic extraction
+                                                </button>
+
+                                            </div>
+                                        </div>}
+
+                                        {llmLoading &&
+                                            <div className="mt-5">
+                                                <Skeleton count={5}/>
+                                            </div>
+                                        }
+
+                                        {!llmLoading && 
+                                        <>  
+                                            <p className="mt-5 text-left">{llmResponse}</p>
+                                        </>
+                                        }
+                                    </div>
                                 </div>
-                                
                             </div>
+
                             }
                         </div>
                         
