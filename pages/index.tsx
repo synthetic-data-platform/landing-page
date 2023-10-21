@@ -11,6 +11,7 @@ import Testimonials from "../components/Testimonials";
 import Solutions from "../components/Solutions";
 import TabsTest from "../components/TabsTest";
 import Features from "../components/Features";
+import Features1 from "../components/Features1";
 
 import {
   ReactCompareSlider,
@@ -19,14 +20,23 @@ import {
 
 const Home: NextPage = () => {
   return (
-    <div className="mx-auto flex max-w-6xl flex-col items-center justify-center py-2">
+    <div className="mx-auto flex max-w-full flex-col items-center justify-center py-2">
       <Head>
         <title>VoxLab | Contact Center AI </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <svg className="absolute inset-0 -z-10 h-full w-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]" aria-hidden="true">
+        <defs>
+          <pattern id="0787a7c5-978c-4f66-83c7-11c213f99cb7" width="200" height="200" x="50%" y="-1" patternUnits="userSpaceOnUse">
+            <path d="M.5 200V.5H200" fill="none" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" stroke-width="0" fill="url(#0787a7c5-978c-4f66-83c7-11c213f99cb7)" />
+      </svg>
+
       <Header />
-      <main className="mt-10 grid w-full gap-10 px-4 sm:ml-40 sm:mt-16 sm:grid-cols-2">
+      <main className="mt-10 grid max-w-6xl gap-10 px-4 sm:ml-40 sm:mt-16 sm:grid-cols-2">
         <div className="mt-10 sm:mt-16">
           <h1 className="font-display mx-auto max-w-4xl text-4xl font-bold tracking-normal text-slate-900 sm:text-5xl">
             <span className="relative whitespace-nowrap text-[#333]">
@@ -84,6 +94,7 @@ const Home: NextPage = () => {
 
       {/* <Testimonials /> */}
       <Datasets />
+      {/* <Features1/> */}
       {/* <Solutions /> */}
       {/* <TabsTest /> */}
       {/* <Features  /> */}
