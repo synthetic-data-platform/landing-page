@@ -7,6 +7,11 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import AudioFileUpload from "../components/AudioFileUpload1";
 import Footer from "../components/Footer";
+import AWS from 'aws-sdk';
+
+// Initialize the AWS SDK with your credentials
+
+const s3 = new AWS.S3();
 
 export default function ImgEnhancement(){
 
@@ -19,6 +24,7 @@ export default function ImgEnhancement(){
     const [asrLoading, setasrLoading] = useState(true);
     const [llmLoading, setllmLoading] = useState(false);
     const [llmPrompt, setLlmPrompt] = useState<string>("");
+    const [file, setFile] = useState<File | null>(null);
 
   const [nextUiLoading, setnextUiLoading] = useState(false);
 
@@ -126,23 +132,72 @@ export default function ImgEnhancement(){
 
     function convertFile(files: FileList | null) {
         if (files) {
-        convertFileToBase(files);
-        const fileRef = files[0];
-        const reader = new FileReader();
-    
-        reader.onload = (ev) => {
-            if (ev.target) {
-            const arrayBuffer = ev.target.result as ArrayBuffer;
-            const blob = new Blob([arrayBuffer], { type: fileRef.type });
-            setBlobData(blob);
-            } else {
-            console.error("Failed to read the file.");
+            console.log("audio file exists")
+            convertFileToBase(files);
+            convertFileUpload(files);
+            uploadToS3(files)
+            const fileRef = files[0];
+            const reader = new FileReader();
+        
+            reader.onload = (ev) => {
+                if (ev.target) {
+                const arrayBuffer = ev.target.result as ArrayBuffer;
+                const blob = new Blob([arrayBuffer], { type: fileRef.type });
+                setBlobData(blob);
+                } else {
+                console.error("Failed to read the file.");
+                }
+            };
+        
+            reader.readAsArrayBuffer(fileRef);
             }
-        };
-    
-        reader.readAsArrayBuffer(fileRef);
-        }
     }
+
+    const convertFileUpload = (files: FileList | null) => {
+        if (files && files.length > 0) {
+          const selectedFile = files[0];
+          setFile(selectedFile);
+        }
+      };
+    
+      const uploadToS3 = async (files: FileList) => {
+
+        const audioFile = files[0];
+
+        if (!audioFile) {
+          console.error("No audio file selected.");
+          return;
+        }
+    
+        try {
+          // Generate a unique key for the file in the S3 bucket
+          const s3Key = `audio_${Date.now()}`;
+    
+          // Upload the file to S3
+          const params = {
+            Bucket: 'cyclic-mauve-abalone-gear-ap-south-1',
+            Key: s3Key,
+            Body: audioFile,
+          };
+    
+          s3.upload(params, (err: Error, data: AWS.S3.ManagedUpload.SendData) => {
+            if (err) {
+              console.error("S3 Upload Error:", err);
+            } else {
+              console.log("S3 Upload Successful");
+              // Now you can send s3Key to your API
+              sendS3KeyToApi(s3Key);
+            }
+          });
+        } catch (error) {
+          console.error("S3 Upload Error:", error);
+        }
+      };
+
+      const sendS3KeyToApi = (s3Key: string) => {
+        // Replace this with your API call to send s3Key to your server
+        console.log("Sending s3Key to the API:", s3Key);
+      };
   
     // Function to format the text with line breaks
     const formatTextWithLineBreaks = (text: string) => {
