@@ -67,14 +67,219 @@ function App() {
   const [asrLoading, setasrLoading] = useState(true);
   const [llmLoading, setllmLoading] = useState(false);
   const [llmPrompt, setLlmPrompt] = useState<string>("");
+  const [nextUiLoading, setnextUiLoading] = useState(false);
+  const [generateSummary, setgenerateSummary] = useState<string>("");
+  const [generateSatisfaction, setgenerateSatisfaction] = useState<string>("");
+  const [generateSentiment, setgenerateSentiment] = useState<string>("");
+  const [generateTurnover, setgenerateTurnover] = useState<string>("");
+  const [generateTopic, setgenerateTopic] = useState<string>("");
 
-const [nextUiLoading, setnextUiLoading] = useState(false);
 
+  function generateLLMSummary(data: { chat_message: string | any, conversation: string }){
+    if (process.env.NEXT_PUBLIC_LLM_URL){
+
+        const formData = new FormData();
+        formData.append('chat_message', data.chat_message);
+        formData.append('conversation', data.conversation);
+    
+        const llmApiUrl = process.env.NEXT_PUBLIC_LLM_URL;
+        setLlmError(false); // Reset error state
+        
+        try {
+            axios.post(llmApiUrl, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+            })
+            .then((response) => {
+                if (response.status === 200) {
+                console.log("LLM Response from summary: ", response.data);
+                setgenerateSummary(response.data);
+                return response.data;
+
+                } else {
+                setLlmError(true); // Set error state to true
+                console.error(`Request failed with status code ${response.status}`);
+                console.log(response.data);
+                }
+            })
+            .catch((error) => {
+                setLlmError(true); // Set error state to true
+                console.error(`An error occurred: ${error}`);
+            });
+        } catch (error) {
+            setLlmError(true); // Set error state to true
+            console.error(`An error occurred: ${error}`);
+        }}
+
+        return '';
+  }
+
+  function generateLLMSatisfaction(data: { chat_message: string | any, conversation: string }){
+    if (process.env.NEXT_PUBLIC_LLM_URL){
+
+        const formData = new FormData();
+        formData.append('chat_message', data.chat_message);
+        formData.append('conversation', data.conversation);
+    
+        const llmApiUrl = process.env.NEXT_PUBLIC_LLM_URL;
+        setLlmError(false); // Reset error state
+        
+        try {
+            axios.post(llmApiUrl, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+            })
+            .then((response) => {
+                if (response.status === 200) {
+                console.log("LLM Response from Satisfaction: ", response.data);
+                setgenerateSatisfaction(response.data);
+                return response.data;
+
+                } else {
+                setLlmError(true); // Set error state to true
+                console.error(`Request failed with status code ${response.status}`);
+                console.log(response.data);
+                }
+            })
+            .catch((error) => {
+                setLlmError(true); // Set error state to true
+                console.error(`An error occurred: ${error}`);
+            });
+        } catch (error) {
+            setLlmError(true); // Set error state to true
+            console.error(`An error occurred: ${error}`);
+        }}
+
+        return '';
+  }
+
+  function generateLLMSentiment(data: { chat_message: string | any, conversation: string }){
+    if (process.env.NEXT_PUBLIC_LLM_URL){
+
+        const formData = new FormData();
+        formData.append('chat_message', data.chat_message);
+        formData.append('conversation', data.conversation);
+    
+        const llmApiUrl = process.env.NEXT_PUBLIC_LLM_URL;
+        setLlmError(false); // Reset error state
+        
+        try {
+            axios.post(llmApiUrl, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+            })
+            .then((response) => {
+                if (response.status === 200) {
+                console.log("LLM Response from Sentiment: ", response.data);
+                setgenerateSentiment(response.data);
+                return response.data;
+
+                } else {
+                setLlmError(true); // Set error state to true
+                console.error(`Request failed with status code ${response.status}`);
+                console.log(response.data);
+                }
+            })
+            .catch((error) => {
+                setLlmError(true); // Set error state to true
+                console.error(`An error occurred: ${error}`);
+            });
+        } catch (error) {
+            setLlmError(true); // Set error state to true
+            console.error(`An error occurred: ${error}`);
+        }}
+
+        return '';
+  }
+
+  function generateLLMTurnover(data: { chat_message: string | any, conversation: string }){
+    if (process.env.NEXT_PUBLIC_LLM_URL){
+
+        const formData = new FormData();
+        formData.append('chat_message', data.chat_message);
+        formData.append('conversation', data.conversation);
+    
+        const llmApiUrl = process.env.NEXT_PUBLIC_LLM_URL;
+        setLlmError(false); // Reset error state
+        
+        try {
+            axios.post(llmApiUrl, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+            })
+            .then((response) => {
+                if (response.status === 200) {
+                console.log("LLM Response from turnover: ", response.data);
+                setgenerateTurnover(response.data);
+                return response.data;
+
+                } else {
+                setLlmError(true); // Set error state to true
+                console.error(`Request failed with status code ${response.status}`);
+                console.log(response.data);
+                }
+            })
+            .catch((error) => {
+                setLlmError(true); // Set error state to true
+                console.error(`An error occurred: ${error}`);
+            });
+        } catch (error) {
+            setLlmError(true); // Set error state to true
+            console.error(`An error occurred: ${error}`);
+        }}
+
+        return '';
+  }
+
+  function generateLLMTopic(data: { chat_message: string | any, conversation: string }){
+    if (process.env.NEXT_PUBLIC_LLM_URL){
+
+        const formData = new FormData();
+        formData.append('chat_message', data.chat_message);
+        formData.append('conversation', data.conversation);
+    
+        const llmApiUrl = process.env.NEXT_PUBLIC_LLM_URL;
+        setLlmError(false); // Reset error state
+        
+        try {
+            axios.post(llmApiUrl, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+            })
+            .then((response) => {
+                if (response.status === 200) {
+                console.log("LLM Response from topic: ", response.data);
+                setgenerateTopic(response.data);
+                return response.data;
+
+                } else {
+                setLlmError(true); // Set error state to true
+                console.error(`Request failed with status code ${response.status}`);
+                console.log(response.data);
+                }
+            })
+            .catch((error) => {
+                setLlmError(true); // Set error state to true
+                console.error(`An error occurred: ${error}`);
+            });
+        } catch (error) {
+            setLlmError(true); // Set error state to true
+            console.error(`An error occurred: ${error}`);
+        }}
+
+        return '';
+  }
 
   function llmRequestResponse(data: { chat_message: string | any, conversation: string }) {
       setllmLoading(true);
       console.log("data: ",data)
       let llmTranscript = '';
+
       if (process.env.NEXT_PUBLIC_LLM_URL){
 
       const formData = new FormData();
@@ -141,12 +346,39 @@ const [nextUiLoading, setnextUiLoading] = useState(false);
           const transcript = response.data.response.transcript
           setApiResponse(transcript);
           setasrLoading(false);
-          const llm_data = {
-              chat_message : "Summarise the conversation between customer and agent.",
+          const llm_summary = {
+              chat_message : "Generate the summary, summary should be who was customer and who was agent, then what was customer asking for, how did agent respond to it and was customer satisfied with the agent",
               conversation: transcript
           }
 
-          // llmRequestResponse(llm_data)
+          generateLLMSummary(llm_summary)
+
+          const llm_satisfaction = {
+            chat_message: "Was customer satisfied with agent information, answer it in yes or no and reason",
+            conversation: transcript,
+            };
+            generateLLMSatisfaction(llm_satisfaction)
+
+            const llm_sentiment = {
+                chat_message: "Give me a proper report on what was the sentiment of customer and agent, what is the overall sentiment of a entire conversation. Give the sentiment in dictionary format like this {speaker0: '', speaker1: '', Overall Sentiment: ''}",
+                conversation: apiResponse,
+                };
+          
+            generateLLMSentiment(llm_sentiment)
+
+            const llm_turnover = {
+                chat_message: "What are the changes that this customer will turn into paying customer or this customer will come back",
+                conversation: apiResponse,
+                };
+            
+            generateLLMTurnover(llm_turnover)
+            
+            const llm_topic = {
+                chat_message: "Extract the conversation topic between speakers",
+                conversation: apiResponse,
+                };
+
+            generateLLMTopic(llm_topic)
 
           console.log("API Response:", response.data.response.transcript);
           })
@@ -454,7 +686,7 @@ const [nextUiLoading, setnextUiLoading] = useState(false);
             </div>
         }
 
-        { !uploadUi  && apiResponse &&
+        { !uploadUi  && apiResponse && generateSummary && generateSatisfaction && generateSentiment && generateTurnover && generateTopic &&
 
           <button
             className="mt-40 inline-flex items-center justify-center rounded-xl border-2 bg-[#6a32ee] px-6 py-3 text-center font-medium text-white duration-200 hover:border-black hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto"
