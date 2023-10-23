@@ -56,6 +56,8 @@ import React,{ useState, useEffect }  from 'react';
 import axios from 'axios';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import PdfGenerator from './PdfGenerator';
+import saveAs from 'file-saver';
 
 function App() {
   const [filebase64,setFileBase64] = useState<string>("")
@@ -388,7 +390,6 @@ function App() {
 
   }
 
-
 // The Magic all happens here.
   function convertFileToBase(files: FileList|null) {
       if (files) {
@@ -427,32 +428,39 @@ function App() {
 
   // Function to format the text with line breaks
   const formatTextWithLineBreaks = (text: string) => {
-      // Split the text into lines
-      const lines = text.split(/\n/);
-      
-      // Format the lines to include line breaks after each "Speaker X:" line
-      const formattedLines = [];
-      let currentSpeaker = null;
+    const formattedResponse = text.replace(/Speaker (\d+:)/g, '\nSpeaker $1');
 
-      for (const line of lines) {
-          const match = line.match(/Speaker (\d+): (.+)/);
-          if (match) {
-          // Found a new speaker, add line break if it's not the first speaker
-          if (currentSpeaker !== null) {
-              formattedLines.push('');
-          }
-          currentSpeaker = match[0];
-          formattedLines.push(line);
-          } else {
-          // Add the line to the current speaker's dialog
-          formattedLines.push(line);
-          }
-      }
+    const speakerResponses = formattedResponse.split('\n').filter(response => response.trim() !== '');
 
-      // Join the formatted lines with line breaks
-      return formattedLines.join('\n');
+      return speakerResponses;
   }
 
+  const generatePdf = async (summary: string) => {
+    try {
+      const response = await axios.post('https://tinypixel.pythonanywhere.com/pdf-generate', {
+        summary: summary,
+      });  
+
+      console.log("pdf response: " + response)
+  
+      return response.data;
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      throw error;
+    }
+  };
+
+
+  const handleGeneratePdf = async (summary : string) => {
+    try {
+      const pdfData = await generatePdf(summary);
+      const blob = new Blob([pdfData], { type: 'application/pdf' });
+      saveAs(blob, 'sample.pdf');
+    } catch (error) {
+      // Handle error
+    }
+  };
+  
   return (
     <div className="App mb-44">
       <header className="">
@@ -557,7 +565,9 @@ function App() {
                         {apiResponse &&
                         <div>
                             <h1 className="text-xl font-bold">ASR Transcript: </h1>
-                            <p className="text-left mt-5">{formatTextWithLineBreaks(apiResponse)}</p>
+                            <p className="text-left mt-5">{formatTextWithLineBreaks(apiResponse).map((response, index) => 
+                                <p key={index}>{response}</p>
+                            )}</p>
                         
                         </div>
                         }
@@ -686,15 +696,22 @@ function App() {
             </div>
         }
 
-        { !uploadUi  && apiResponse && generateSummary && generateSatisfaction && generateSentiment && generateTurnover && generateTopic &&
+        {/* { !uploadUi  && apiResponse && generateSummary && generateSatisfaction && generateSentiment && generateTurnover && generateTopic &&
 
-          <button
-            className="mt-40 inline-flex items-center justify-center rounded-xl border-2 bg-[#6a32ee] px-6 py-3 text-center font-medium text-white duration-200 hover:border-black hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto"
-          >
-          Generate Report
-          </button>
+            <PdfGenerator summary={generateSummary} sentiment={generateSentiment} satisfaction={generateSatisfaction} turnover={generateTurnover} topics={generateTopic} />
+        } */}
+        
 
-        }
+        {generateSummary && 
+            
+        <div>
+            <button color="primary" onClick={() => handleGeneratePdf(generateSummary)}
+                className='className="mt-40 inline-flex items-center justify-center rounded-xl border-2 bg-[#6a32ee] px-6 py-3 text-center font-medium text-white duration-200 hover:border-black hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto"'
+            >
+                Generate Report
+            </button>
+
+        </div>}
 
         </div>
       </header>
