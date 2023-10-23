@@ -9,6 +9,7 @@
     "@deepgram/sdk": "^2.4.0",
     "@headlessui/react": "^1.7.7",
     "@radix-ui/react-popover": "1.0.6",
+    "@supabase/supabase-js": "^2.38.2",
     "@tensorflow/tfjs": "^3.21.0",
     "@upstash/ratelimit": "^0.1.5",
     "@upstash/redis": "^1.19.1",

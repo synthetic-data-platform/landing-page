@@ -58,6 +58,7 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import PdfGenerator from './PdfGenerator';
 import saveAs from 'file-saver';
+import { createClient } from '@supabase/supabase-js'
 
 function App() {
   const [filebase64,setFileBase64] = useState<string>("")
@@ -75,6 +76,14 @@ function App() {
   const [generateSentiment, setgenerateSentiment] = useState<string>("");
   const [generateTurnover, setgenerateTurnover] = useState<string>("");
   const [generateTopic, setgenerateTopic] = useState<string>("");
+
+  const supabase_url = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
+  const supabase_key = process.env.NEXT_PUBLIC_SUPABASE_KEY || ''
+  
+  
+    const supabase = createClient(supabase_url, supabase_key);
+    
+
 
 
   function generateLLMSummary(data: { chat_message: string | any, conversation: string }){
@@ -436,31 +445,54 @@ function App() {
   }
 
   const generatePdf = async (summary: string) => {
+
+    if (process.env.NEXT_PUBLIC_PDF_GENERATE){
     try {
-      const response = await axios.post('https://tinypixel.pythonanywhere.com/pdf-generate', {
+      const response = await axios.post(process.env.NEXT_PUBLIC_PDF_GENERATE, {
         summary: summary,
       });  
 
-      console.log("pdf response: " + response)
+      console.log("pdf response: " + response.data.file_path)
+      const pdf_file_path = String(response.data.file_path)
   
-      return response.data;
+      return pdf_file_path;
     } catch (error) {
       console.error('Error generating PDF:', error);
       throw error;
+    }
     }
   };
 
 
   const handleGeneratePdf = async (summary : string) => {
     try {
-      const pdfData = await generatePdf(summary);
-      const blob = new Blob([pdfData], { type: 'application/pdf' });
-      saveAs(blob, 'sample.pdf');
-    } catch (error) {
-      // Handle error
+      const pdfDataFilePath = await generatePdf(summary);
+    
+      const { data, error } = await supabase
+      .storage
+      .from('voxlab-pdf')
+      .download(`pdf/${pdfDataFilePath}`);
+      
+        if (error) {
+            // Handle the error
+            console.error('Supabase Storage error:', error);
+        } else {
+            // The file download was successful, and data contains the file content.
+            // You can use the data here.
+            console.log('File downloaded successfully', {data});
+            const blob = new Blob([data], { type: 'application/pdf' });
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = `${+new Date()}.pdf`;
+            link.click();
+            window.URL.revokeObjectURL(link.href);
+        }
     }
-  };
-  
+    catch (error) {
+        // Handle any other errors that may occur outside of the Supabase request.
+        console.error('An unexpected error occurred:', error);
+    }
+} 
   return (
     <div className="App mb-44">
       <header className="">
@@ -704,7 +736,7 @@ function App() {
 
         {generateSummary && 
             
-        <div>
+        <div className='mt-28'>
             <button color="primary" onClick={() => handleGeneratePdf(generateSummary)}
                 className='className="mt-40 inline-flex items-center justify-center rounded-xl border-2 bg-[#6a32ee] px-6 py-3 text-center font-medium text-white duration-200 hover:border-black hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto"'
             >
@@ -720,3 +752,7 @@ function App() {
 }
 
 export default App;
+
+function str(file_path: any) {
+    throw new Error('Function not implemented.');
+}
