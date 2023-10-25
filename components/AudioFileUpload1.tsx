@@ -308,7 +308,7 @@ function App() {
           })
           .then((response) => {
               if (response.status === 200) {
-              console.log("LLM Response: ", response.data);
+              console.log("LLM Response: ", response);
               llmTranscript = response.data;
               setLlmResponse(response.data);
               setllmLoading(false);
@@ -358,38 +358,39 @@ function App() {
           setApiResponse(transcript);
           setasrLoading(false);
           const llm_summary = {
-              chat_message : "Generate the summary, summary should be who was customer and who was agent, then what was customer asking for, how did agent respond to it and was customer satisfied with the agent",
-              conversation: transcript
+            //   chat_message : "Generate the summary, summary should be who was customer and who was agent, then what was customer asking for, how did agent respond to it and was customer satisfied with the agent",
+            chat_message: "Generate the summary",
+            conversation: transcript
           }
 
-          generateLLMSummary(llm_summary)
+        //   generateLLMSummary(llm_summary)
 
           const llm_satisfaction = {
-            chat_message: "Was customer satisfied with agent information, answer it in yes or no and reason",
+            chat_message: "Was customer satisfied with agent information",
             conversation: transcript,
             };
-            generateLLMSatisfaction(llm_satisfaction)
+            // generateLLMSatisfaction(llm_satisfaction)
 
             const llm_sentiment = {
-                chat_message: "Give me a proper report on what was the sentiment of customer and agent, what is the overall sentiment of a entire conversation. Give the sentiment in dictionary format like this {speaker0: '', speaker1: '', Overall Sentiment: ''}",
+                chat_message: "what is the sentiment for the conversation?",
                 conversation: apiResponse,
                 };
           
-            generateLLMSentiment(llm_sentiment)
+            // generateLLMSentiment(llm_sentiment)
 
             const llm_turnover = {
                 chat_message: "What are the changes that this customer will turn into paying customer or this customer will come back",
                 conversation: apiResponse,
                 };
             
-            generateLLMTurnover(llm_turnover)
+            // generateLLMTurnover(llm_turnover)
             
             const llm_topic = {
                 chat_message: "Extract the conversation topic between speakers",
                 conversation: apiResponse,
                 };
 
-            generateLLMTopic(llm_topic)
+            // generateLLMTopic(llm_topic)
 
           console.log("API Response:", response.data.response.transcript);
           })
@@ -644,7 +645,7 @@ function App() {
                                     className="text-gray-900 md:mb-0 mb-2 bg-white rounded-lg border border-blue-200 py-1 px-2 hover:bg-gray-100 hover:text-blue-500 focus:ring-4 focus:ring-gray-200 mr-4 max-w-fit"
                                     onClick={(e) => {
                                         const llmData = {
-                                        chat_message: "Generate the summary, summary should be who was customer and who was agent, then what was customer asking for, how did agent respond to it and was customer satisfied with the agent",
+                                        chat_message: "Generate the summary",
                                         conversation: apiResponse,
                                         };
                                         llmRequestResponse(llmData);
@@ -657,7 +658,7 @@ function App() {
                                     className="text-gray-900 md:mb-0 mb-2 bg-white rounded-lg border border-blue-200 py-1 px-2 hover:bg-gray-100 hover:text-blue-500 focus:ring-4 focus:ring-gray-200 mr-4 max-w-fit"
                                     onClick={(e) => {
                                         const llmData = {
-                                        chat_message: "Was customer satisfied with agent information, answer it in yes or no and reason",
+                                        chat_message: "Was customer satisfied with agent information",
                                         conversation: apiResponse,
                                         };
                                         llmRequestResponse(llmData);
@@ -670,7 +671,7 @@ function App() {
                                     className="text-gray-900 md:mb-0 mb-2 bg-white rounded-lg border border-blue-200 py-1 px-2 hover:bg-gray-100 hover:text-blue-500 focus:ring-4 focus:ring-gray-200 mr-4 max-w-fit"
                                     onClick={(e) => {
                                         const llmData = {
-                                        chat_message: "Give me a proper report on what was the sentiment of customer and agent, what is the overall sentiment of a entire conversation. Give the sentiment in dictionary format like this {speaker0: '', speaker1: '', Overall Sentiment: ''}",
+                                        chat_message: "Give me a proper report on what was the sentiment of customer and agent",
                                         conversation: apiResponse,
                                         };
                                         llmRequestResponse(llmData);
@@ -734,7 +735,7 @@ function App() {
         } */}
         
 
-        {generateSummary && 
+        {/* {generateSummary && 
             
         <div className='mt-28'>
             <button color="primary" onClick={() => handleGeneratePdf(generateSummary)}
@@ -743,7 +744,7 @@ function App() {
                 Generate Report
             </button>
 
-        </div>}
+        </div>} */}
 
         </div>
       </header>
