@@ -397,8 +397,8 @@ function App() {
           setApiResponse(transcript);
           setasrLoading(false);
           const llm_summary = {
-              chat_message : "Generate the summary, summary should be who was customer and who was agent, then what was customer asking for, how did agent respond to it and was customer satisfied with the agent",
-            // chat_message: "Generate the summary in the language the conversation between the customer and the agent is",
+            //   chat_message : "Generate the summary, summary should be who was customer and who was agent, then what was customer asking for, how did agent respond to it and was customer satisfied with the agent",
+            chat_message: "generate the Conversation summary",
             conversation: transcript
           }
 
@@ -419,14 +419,14 @@ function App() {
             generateLLMSentiment(llm_sentiment)
 
             const llm_turnover = {
-                chat_message: "What are the changes that this customer will turn into paying customer or this customer will come back, answer in yes or no and then explain why. respond in the language agent and customer are talking",
+                chat_message: "What are the changes that this customer will turn into paying customer or this customer will come back",
                 conversation: apiResponse,
                 };
             
             generateLLMTurnover(llm_turnover)
             
             const llm_topic = {
-                chat_message: "Extract the conversation topic between speakers",
+                chat_message: "what is the conversation topic between speakers?",
                 conversation: apiResponse,
                 };
 
@@ -708,7 +708,7 @@ async function uiReportGeneration(e: any) {
                                     className="text-gray-900 md:mb-0 mb-2 bg-white rounded-lg border border-blue-200 py-1 px-2 hover:bg-gray-100 hover:text-blue-500 focus:ring-4 focus:ring-gray-200 mr-4 max-w-fit"
                                     onClick={(e) => {
                                         const llmData = {
-                                        chat_message: "Generate the summary in the language the conversation between the customer and the agent is",
+                                        chat_message: "generate the Conversation summary",
                                         conversation: apiResponse,
                                         };
                                         llmRequestResponse(llmData);
@@ -765,7 +765,7 @@ async function uiReportGeneration(e: any) {
                                     className="text-gray-900 md:mb-0 mb-2 bg-white rounded-lg border border-blue-200 py-1 px-2 hover:bg-gray-100 hover:text-blue-500 focus:ring-4 focus:ring-gray-200 mr-4 w-fit"
                                     onClick={(e) => {
                                         const llmData = {
-                                        chat_message: "Extract the conversation topic between speakers",
+                                        chat_message: "what is the conversation topic between speakers?",
                                         conversation: apiResponse,
                                         };
                                         llmRequestResponse(llmData);
