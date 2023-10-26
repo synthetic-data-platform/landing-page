@@ -105,7 +105,7 @@ function App() {
             })
             .then((response) => {
                 if (response.status === 200) {
-                console.log("LLM Response from summary: ", response.data);
+                // console.log("LLM Response from summary: ", response.data);
                 setgenerateSummary(response.data);
                 return response.data;
 
@@ -145,7 +145,7 @@ function App() {
             })
             .then((response) => {
                 if (response.status === 200) {
-                console.log("LLM Response from Satisfaction: ", response.data);
+                // console.log("LLM Response from Satisfaction: ", response.data);
                 setgenerateSatisfaction(response.data);
                 return response.data;
 
@@ -185,7 +185,7 @@ function App() {
             })
             .then((response) => {
                 if (response.status === 200) {
-                console.log("LLM Response from Sentiment: ", response.data);
+                // console.log("LLM Response from Sentiment: ", response.data);
                 setgenerateSentiment(response.data);
                 return response.data;
 
@@ -225,7 +225,7 @@ function App() {
             })
             .then((response) => {
                 if (response.status === 200) {
-                console.log("LLM Response from turnover: ", response.data);
+                // console.log("LLM Response from turnover: ", response.data);
                 setgenerateTurnover(response.data);
                 return response.data;
 
@@ -265,7 +265,7 @@ function App() {
             })
             .then((response) => {
                 if (response.status === 200) {
-                console.log("LLM Response from topic: ", response.data);
+                // console.log("LLM Response from topic: ", response.data);
                 setgenerateTopic(response.data);
                 return response.data;
 
@@ -289,7 +289,7 @@ function App() {
 
   function llmRequestResponse(data: { chat_message: string | any, conversation: string }) {
       setllmLoading(true);
-      console.log("data: ",data)
+    //   console.log("data: ",data)
       let llmTranscript: string = '';
 
       if (process.env.NEXT_PUBLIC_LLM_URL){
@@ -309,7 +309,7 @@ function App() {
           })
           .then((response) => {
               if (response.status === 200) {
-              console.log("LLM Response: ", response);
+            //   console.log("LLM Response: ", response);
               llmTranscript = response.data;
               setLlmResponse(response.data);
               setllmLoading(false);
@@ -342,14 +342,14 @@ function App() {
       
       }
       setuploadUi(false);
-      console.log("Blob data: " + typeof blobData);
+    //   console.log("Blob data: " + typeof blobData);
 
       const formData = new FormData();
       if (blobData) {
         // formData.append('audioBlob', blobData);
 
         const uniqueFileName = `${Date.now()}.${fileExtensionVariable}`;
-        console.log("unique file name: " + uniqueFileName);
+        // console.log("unique file name: " + uniqueFileName);
 
         const { data: uploadData, error: uploadError } = await supabase
         .storage
@@ -362,7 +362,7 @@ function App() {
         if (uploadError) {
         console.log("Upload error: " + uploadError);
         } else {
-        console.log("Upload success: " + uploadData);
+        // console.log("Upload success: " + uploadData);
         }
 
         const { data: signedUrlData, error: signedUrlError } = await supabase
@@ -378,7 +378,7 @@ function App() {
             console.error("Signed URL error: " + signedUrlError);
         } else {
              audio_url = signedUrlData.signedUrl || '';
-            console.log("Signed URL data: " + signedUrlData.signedUrl);
+            // console.log("Signed URL data: " + signedUrlData.signedUrl);
         }
 
         formData.append('audio_url', audio_url)
@@ -432,7 +432,7 @@ function App() {
 
             generateLLMTopic(llm_topic)
 
-          console.log("API Response:", response.data.response.transcript);
+        //   console.log("API Response:", response.data.response.transcript);
           })
           .catch((error) => {
           console.error("API Error:", error);
@@ -453,12 +453,12 @@ function App() {
         if (parts.length === 2) {
         const fileExtension = parts[1];
         setFileExtensionVariable(fileExtension);
-        console.log("File extension:", fileExtension);
+        // console.log("File extension:", fileExtension);
         } else {
         console.log("Unable to determine file extension.");
         }
 
-      console.log("This file upload is of type:",fileType)
+    //   console.log("This file upload is of type:",fileType)
       const reader = new FileReader()
       reader.readAsBinaryString(fileRef)
       reader.onload=(ev: any) => {
@@ -549,9 +549,7 @@ function App() {
 } 
 
 async function uiReportGeneration(e: any) {
-    if (generateSummary){
-        console.log("Generating summary complated")
-    }
+
     setUiSummaryGeneratorBool(true);
 }
 
