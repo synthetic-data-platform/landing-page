@@ -76,7 +76,8 @@ function App() {
   const [generateSentiment, setgenerateSentiment] = useState<string>("");
   const [generateTurnover, setgenerateTurnover] = useState<string>("");
   const [generateTopic, setgenerateTopic] = useState<string>("");
-
+  const [fileTypeVariable, setFileTypeVariable] = useState<string | 'audio/mpeg'>("");
+  const [fileExtensionVariable, setFileExtensionVariable] = useState<string | '.mp3'>("");
 //   const supabase_url = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
 //   const supabase_key = process.env.NEXT_PUBLIC_SUPABASE_KEY || ''
   
@@ -330,7 +331,7 @@ function App() {
 
   }
 
-  function formSubmit(e: any) {
+ async function formSubmit(e: any) {
       e.preventDefault();
 
       if (!blobData) {
@@ -342,8 +343,38 @@ function App() {
 
       const formData = new FormData();
       if (blobData) {
-      formData.append('audioBlob', blobData);
-      }
+        formData.append('audioBlob', blobData);
+
+        const uniqueFileName = `${Date.now()}.${fileExtensionVariable}`;
+        console.log("unique file name: " + uniqueFileName);
+
+        const { data: uploadData, error: uploadError } = await supabase
+        .storage
+        .from('voxlab-blob')
+        .upload(`blob/${uniqueFileName}`, blobData, {
+            cacheControl: '3600',
+            upsert: false,
+        });
+
+        if (uploadError) {
+        console.log("Upload error: " + uploadError);
+        } else {
+        console.log("Upload success: " + uploadData);
+        }
+
+        const { data: signedUrlData, error: signedUrlError } = await supabase
+        .storage
+        .from('voxlab-blob')
+        .createSignedUrl(`blob/${uniqueFileName}`, 180, {
+            download: true
+        });
+
+        if (signedUrlError) {
+        console.error("Signed URL error: " + signedUrlError);
+        } else {
+        console.log("Signed URL data: " + signedUrlData.signedUrl);
+        }
+
 
       if (process.env.NEXT_PUBLIC_ASR_URL){
       const asr_url = process.env.NEXT_PUBLIC_ASR_URL;
@@ -396,6 +427,7 @@ function App() {
           .catch((error) => {
           console.error("API Error:", error);
           });}
+        }
 
   }
 
@@ -404,6 +436,18 @@ function App() {
       if (files) {
       const fileRef = files[0] || ""
       const fileType: string= fileRef.type || ""
+      setFileTypeVariable(fileType)
+
+      // Extract the file extension
+        const parts = fileType.split("/");
+        if (parts.length === 2) {
+        const fileExtension = parts[1];
+        setFileExtensionVariable(fileExtension);
+        console.log("File extension:", fileExtension);
+        } else {
+        console.log("Unable to determine file extension.");
+        }
+
       console.log("This file upload is of type:",fileType)
       const reader = new FileReader()
       reader.readAsBinaryString(fileRef)
