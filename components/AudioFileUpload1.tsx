@@ -78,6 +78,7 @@ function App() {
   const [generateTopic, setgenerateTopic] = useState<string>("");
   const [fileTypeVariable, setFileTypeVariable] = useState<string | 'audio/mpeg'>("");
   const [fileExtensionVariable, setFileExtensionVariable] = useState<string | '.mp3'>("");
+  const [uiSummaryGeneratorBool, setUiSummaryGeneratorBool] = useState(false);
 //   const supabase_url = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
 //   const supabase_key = process.env.NEXT_PUBLIC_SUPABASE_KEY || ''
   
@@ -289,7 +290,7 @@ function App() {
   function llmRequestResponse(data: { chat_message: string | any, conversation: string }) {
       setllmLoading(true);
       console.log("data: ",data)
-      let llmTranscript = '';
+      let llmTranscript: string = '';
 
       if (process.env.NEXT_PUBLIC_LLM_URL){
 
@@ -312,6 +313,8 @@ function App() {
               llmTranscript = response.data;
               setLlmResponse(response.data);
               setllmLoading(false);
+              return llmTranscript;
+
               } else {
               setLlmError(true); // Set error state to true
               console.error(`Request failed with status code ${response.status}`);
@@ -395,38 +398,38 @@ function App() {
           setasrLoading(false);
           const llm_summary = {
             //   chat_message : "Generate the summary, summary should be who was customer and who was agent, then what was customer asking for, how did agent respond to it and was customer satisfied with the agent",
-            chat_message: "Generate the summary",
+            chat_message: "Generate the summary in the language the conversation between the customer and the agent is",
             conversation: transcript
           }
 
-        //   generateLLMSummary(llm_summary)
+          generateLLMSummary(llm_summary)
 
           const llm_satisfaction = {
-            chat_message: "Was customer satisfied with agent information",
+            chat_message: "Was customer satisfied with agent information, only answer in yes or no and then give an explanation. Generate the response in the language the agent and customer are communicating",
             conversation: transcript,
             };
-            // generateLLMSatisfaction(llm_satisfaction)
+            generateLLMSatisfaction(llm_satisfaction)
 
             const llm_sentiment = {
-                chat_message: "what is the sentiment for the conversation?",
+                chat_message: "what is the entire conversation sentiment? what is the agent sentiment? what is the customer sentiment?",
                 conversation: apiResponse,
                 };
           
-            // generateLLMSentiment(llm_sentiment)
+            generateLLMSentiment(llm_sentiment)
 
             const llm_turnover = {
-                chat_message: "What are the changes that this customer will turn into paying customer or this customer will come back",
+                chat_message: "What are the changes that this customer will turn into paying customer or this customer will come back, answer in yes or no and then explain why. respond in the language agent and customer are talking",
                 conversation: apiResponse,
                 };
             
-            // generateLLMTurnover(llm_turnover)
+            generateLLMTurnover(llm_turnover)
             
             const llm_topic = {
                 chat_message: "Extract the conversation topic between speakers",
                 conversation: apiResponse,
                 };
 
-            // generateLLMTopic(llm_topic)
+            generateLLMTopic(llm_topic)
 
           console.log("API Response:", response.data.response.transcript);
           })
@@ -543,6 +546,15 @@ function App() {
         console.error('An unexpected error occurred:', error);
     }
 } 
+
+async function uiReportGeneration(e: any) {
+    if (generateSummary){
+        console.log("Generating summary complated")
+    }
+    setUiSummaryGeneratorBool(true);
+}
+
+
   return (
     <div className="App mb-44">
       <header className="">
@@ -695,7 +707,7 @@ function App() {
                                     className="text-gray-900 md:mb-0 mb-2 bg-white rounded-lg border border-blue-200 py-1 px-2 hover:bg-gray-100 hover:text-blue-500 focus:ring-4 focus:ring-gray-200 mr-4 max-w-fit"
                                     onClick={(e) => {
                                         const llmData = {
-                                        chat_message: "Generate the summary",
+                                        chat_message: "Generate the summary in the language the conversation between the customer and the agent is",
                                         conversation: apiResponse,
                                         };
                                         llmRequestResponse(llmData);
@@ -708,7 +720,7 @@ function App() {
                                     className="text-gray-900 md:mb-0 mb-2 bg-white rounded-lg border border-blue-200 py-1 px-2 hover:bg-gray-100 hover:text-blue-500 focus:ring-4 focus:ring-gray-200 mr-4 max-w-fit"
                                     onClick={(e) => {
                                         const llmData = {
-                                        chat_message: "Was customer satisfied with agent information",
+                                        chat_message: "Was customer satisfied with agent information, only answer in yes or no and then give an explanation. Generate the response in the language the agent and customer are communicating",
                                         conversation: apiResponse,
                                         };
                                         llmRequestResponse(llmData);
@@ -721,7 +733,8 @@ function App() {
                                     className="text-gray-900 md:mb-0 mb-2 bg-white rounded-lg border border-blue-200 py-1 px-2 hover:bg-gray-100 hover:text-blue-500 focus:ring-4 focus:ring-gray-200 mr-4 max-w-fit"
                                     onClick={(e) => {
                                         const llmData = {
-                                        chat_message: "Give me a proper report on what was the sentiment of customer and agent",
+                                        // chat_message: "Give me a proper report on what was the sentiment of customer and agent",
+                                        chat_message: "what is the entire conversation sentiment? what is the agent sentiment? what is the customer sentiment?",
                                         conversation: apiResponse,
                                         };
                                         llmRequestResponse(llmData);
@@ -777,6 +790,47 @@ function App() {
                     </div>
                 </div>
             </div>
+        }
+
+        { !uploadUi  && apiResponse && !uiSummaryGeneratorBool && generateSummary && generateSatisfaction && generateSentiment && generateTurnover && generateTopic &&
+            <div>
+                <button onClick={uiReportGeneration} className="mt-40 inline-flex items-center justify-center rounded-xl border-2 bg-[#6a32ee] px-6 py-3 text-center font-medium text-white duration-200 hover:border-black hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto">
+                    Generate Report
+                </button>
+            </div>
+        }
+
+        {uiSummaryGeneratorBool &&
+
+            <div>
+                
+                <h1 className='text-2xl font-bold mt-40'>Report</h1>
+                <div className='grid grid-cols-3 gap-5 mt-10'>
+                    <div>
+                        <p className='mt-5 text-xl mb-5 font-semibold'>Summary of conversation</p>
+                        <p className='text-left'>{generateSummary}</p>
+                    </div>
+                    <div>
+                        <p className='mt-5 text-xl mb-5 font-semibold'>Customer Satisfaction</p>
+                        <p className='text-left'>{generateSatisfaction}</p>
+                    </div>
+                    <div>
+                        <p className='mt-5 text-xl mb-5 font-semibold'>Conversation sentiment</p>
+                        <p className='text-left'>{generateSentiment}</p>
+                    </div>
+                    <div>
+                        <p className='mt-5 text-xl mb-5 font-semibold'>Customer turnover chances</p>
+                        <p className='text-left'>{generateTurnover}</p>
+                    </div>
+                    <div>
+                        <p className='mt-5 text-xl mb-5 font-semibold'>Conversation topic extraction</p>
+                        <p className='text-left'>{generateTopic}</p>
+                    </div>
+                </div>
+                
+
+            </div>
+
         }
 
         {/* { !uploadUi  && apiResponse && generateSummary && generateSatisfaction && generateSentiment && generateTurnover && generateTopic &&
