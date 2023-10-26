@@ -58,7 +58,7 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import PdfGenerator from './PdfGenerator';
 import saveAs from 'file-saver';
-import { createClient } from '@supabase/supabase-js'
+import { supabase } from '../libs/supabase'
 
 function App() {
   const [filebase64,setFileBase64] = useState<string>("")
@@ -77,14 +77,13 @@ function App() {
   const [generateTurnover, setgenerateTurnover] = useState<string>("");
   const [generateTopic, setgenerateTopic] = useState<string>("");
 
-  const supabase_url = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
-  const supabase_key = process.env.NEXT_PUBLIC_SUPABASE_KEY || ''
+//   const supabase_url = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
+//   const supabase_key = process.env.NEXT_PUBLIC_SUPABASE_KEY || ''
   
   
-    const supabase = createClient(supabase_url, supabase_key);
-    
+//   const client = createClient(supabase_url, supabase_key);
 
-
+//   const supabase = client;
 
   function generateLLMSummary(data: { chat_message: string | any, conversation: string }){
     if (process.env.NEXT_PUBLIC_LLM_URL){
@@ -598,9 +597,10 @@ function App() {
                         {apiResponse &&
                         <div>
                             <h1 className="text-xl font-bold">ASR Transcript: </h1>
-                            <p className="text-left mt-5">{formatTextWithLineBreaks(apiResponse).map((response, index) => 
-                                <p key={index}>{response}</p>
-                            )}</p>
+                            <p className='mt-5'></p>
+                                {formatTextWithLineBreaks(apiResponse).map((response, index) => 
+                                <h1 className='text-left mt-2' key={index}>{response}</h1>
+                            )}
                         
                         </div>
                         }
