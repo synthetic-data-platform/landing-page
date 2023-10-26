@@ -343,7 +343,7 @@ function App() {
 
       const formData = new FormData();
       if (blobData) {
-        formData.append('audioBlob', blobData);
+        // formData.append('audioBlob', blobData);
 
         const uniqueFileName = `${Date.now()}.${fileExtensionVariable}`;
         console.log("unique file name: " + uniqueFileName);
@@ -369,20 +369,26 @@ function App() {
             download: true
         });
 
+        let audio_url: string = '';
+
         if (signedUrlError) {
-        console.error("Signed URL error: " + signedUrlError);
+            console.error("Signed URL error: " + signedUrlError);
         } else {
-        console.log("Signed URL data: " + signedUrlData.signedUrl);
+             audio_url = signedUrlData.signedUrl || '';
+            console.log("Signed URL data: " + signedUrlData.signedUrl);
         }
 
+        formData.append('audio_url', audio_url)
 
-      if (process.env.NEXT_PUBLIC_ASR_URL){
-      const asr_url = process.env.NEXT_PUBLIC_ASR_URL;
-      axios.post(asr_url, formData, {
-          headers: {
-          'Content-Type': 'multipart/form-data',
-          },
-      })
+        if (process.env.NEXT_PUBLIC_ASR_URL){
+
+        const asr_url = process.env.NEXT_PUBLIC_ASR_URL;
+
+        await axios.post(asr_url, formData, {
+            headers: {
+            'Content-Type': 'multipart/form-data',
+            },
+        })
           .then((response) => {
           const transcript = response.data.response.transcript
           setApiResponse(transcript);
