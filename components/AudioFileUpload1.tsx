@@ -397,15 +397,16 @@ function App() {
           setApiResponse(transcript);
           setasrLoading(false);
           const llm_summary = {
-            //   chat_message : "Generate the summary, summary should be who was customer and who was agent, then what was customer asking for, how did agent respond to it and was customer satisfied with the agent",
-            chat_message: "Generate the summary in the language the conversation between the customer and the agent is",
+              chat_message : "Generate the summary, summary should be who was customer and who was agent, then what was customer asking for, how did agent respond to it and was customer satisfied with the agent",
+            // chat_message: "Generate the summary in the language the conversation between the customer and the agent is",
             conversation: transcript
           }
 
           generateLLMSummary(llm_summary)
 
           const llm_satisfaction = {
-            chat_message: "Was customer satisfied with agent information, only answer in yes or no and then give an explanation. Generate the response in the language the agent and customer are communicating",
+            // chat_message: "Was customer satisfied with agent information, only answer in yes or no and then give an explanation. Generate the response in the language the agent and customer are communicating",
+            chat_message: "Was customer satisfied with agent information",
             conversation: transcript,
             };
             generateLLMSatisfaction(llm_satisfaction)
@@ -804,29 +805,79 @@ async function uiReportGeneration(e: any) {
 
             <div>
                 
-                <h1 className='text-2xl font-bold mt-40'>Report</h1>
-                <div className='grid grid-cols-3 gap-5 mt-10'>
-                    <div>
-                        <p className='mt-5 text-xl mb-5 font-semibold'>Summary of conversation</p>
-                        <p className='text-left'>{generateSummary}</p>
+                <div className=" bg-white mt-44">
+                <h1 className='text-5xl font-bold mb-10 text-center'>Report</h1>
+                        <div className="">
+                        <div className="mx-auto max-w-full px-6 lg:px-8">
+                            <div className="mx-auto grid grid-cols-1 gap-5 lg:grid-cols-3 content-center ">
+                            <div className="flex flex-col justify-between rounded-2xl bg-white p-8 ring-1 ring-gray-900/5 sm:p-10">
+                                <div>
+                                {/* <h3 id="tier-hobby" className="text-base font-semibold leading-7 text-indigo-600">Hobby</h3> */}
+                                <div className="flex items-baseline gap-x-2">
+                                    <span className="text-xl font-semibold tracking-tight text-gray-900">Summarization</span>
+                                    {/* <span className="text-base font-semibold leading-7 text-gray-600">/month</span> */}
+                                </div>
+                                <p className="mt-6 text-base leading-7 text-left text-gray-600">{generateSummary}</p>
+                                
+                                </div>
+                                {/* <a href="#" aria-describedby="tier-hobby" className="mt-8 block rounded-md bg-indigo-600 px-3.5 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started today</a> */}
+                            </div>
+
+                            <div className="flex flex-col justify-between rounded-2xl bg-white p-8 ring-1 ring-gray-900/5 sm:p-10">
+                                <div>
+                                {/* <h3 id="tier-hobby" className="text-base font-semibold leading-7 text-indigo-600">Hobby</h3> */}
+                                <div className="flex items-baseline gap-x-2">
+                                    <span className="text-xl font-semibold tracking-tight text-gray-900">Sentiment Analysis</span>
+                                    {/* <span className="text-base font-semibold leading-7 text-gray-600">/month</span> */}
+                                </div>
+                                <p className="mt-6 text-base text-left leading-7 text-gray-600">{generateSentiment}</p>
+                                
+                                </div>
+                                {/* <a href="#" aria-describedby="tier-hobby" className="mt-8 block rounded-md bg-indigo-600 px-3.5 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started today</a> */}
+                            </div>
+                            <div className="flex flex-col justify-between rounded-2xl bg-white p-8 ring-1 ring-gray-900/5 sm:p-10">
+                                <div>
+                                {/* <h3 id="tier-team" className="text-base font-semibold leading-7 text-indigo-600">Team</h3> */}
+                                <div className="flex items-baseline gap-x-2">
+                                    <span className="text-xl font-bold tracking-tight text-gray-900">Topic Extraction</span>
+                                    {/* <span className="text-base font-semibold leading-7 text-gray-600">/month</span> */}
+                                </div>
+                                <p className="mt-6 text-base text-left leading-7 text-gray-600">{generateTopic}</p>
+                                
+                                </div>
+                                {/* <a href="#" aria-describedby="tier-team" className="mt-8 block rounded-md bg-indigo-600 px-3.5 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started today</a> */}
+                            </div>
+
+                            <div className="flex flex-col justify-between rounded-2xl bg-white p-8 ring-1 ring-gray-900/5 sm:p-10">
+                                <div>
+                                {/* <h3 id="tier-hobby" className="text-base font-semibold leading-7 text-indigo-600">Hobby</h3> */}
+                                <div className="flex items-baseline gap-x-2">
+                                    <span className="text-xl font-semibold tracking-tight text-gray-900">Customer Satisfaction</span>
+                                    {/* <span className="text-base font-semibold leading-7 text-gray-600">/month</span> */}
+                                </div>
+                                <p className="mt-6 text-base leading-7 text-left text-gray-600">{generateSatisfaction}</p>
+                                
+                                </div>
+                                {/* <a href="#" aria-describedby="tier-hobby" className="mt-8 block rounded-md bg-indigo-600 px-3.5 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started today</a> */}
+                            </div>
+
+                            <div className="flex flex-col justify-between rounded-2xl bg-white p-8 ring-1 ring-gray-900/5 sm:p-10">
+                                <div>
+                                {/* <h3 id="tier-hobby" className="text-base font-semibold leading-7 text-indigo-600">Hobby</h3> */}
+                                <div className="flex items-baseline gap-x-2">
+                                    <span className="text-xl font-semibold tracking-tight text-gray-900">Customer Turnover chances</span>
+                                    {/* <span className="text-base font-semibold leading-7 text-gray-600">/month</span> */}
+                                </div>
+                                <p className="mt-6 text-base leading-7 text-left text-gray-600">{generateTurnover}</p>
+                                
+                                </div>
+                                {/* <a href="#" aria-describedby="tier-hobby" className="mt-8 block rounded-md bg-indigo-600 px-3.5 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started today</a> */}
+                            </div>
+
+                            </div>
+                        </div>
+                        </div>
                     </div>
-                    <div>
-                        <p className='mt-5 text-xl mb-5 font-semibold'>Customer Satisfaction</p>
-                        <p className='text-left'>{generateSatisfaction}</p>
-                    </div>
-                    <div>
-                        <p className='mt-5 text-xl mb-5 font-semibold'>Conversation sentiment</p>
-                        <p className='text-left'>{generateSentiment}</p>
-                    </div>
-                    <div>
-                        <p className='mt-5 text-xl mb-5 font-semibold'>Customer turnover chances</p>
-                        <p className='text-left'>{generateTurnover}</p>
-                    </div>
-                    <div>
-                        <p className='mt-5 text-xl mb-5 font-semibold'>Conversation topic extraction</p>
-                        <p className='text-left'>{generateTopic}</p>
-                    </div>
-                </div>
                 
 
             </div>
