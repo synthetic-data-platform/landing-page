@@ -402,7 +402,7 @@ function App() {
             conversation: transcript
           }
 
-          generateLLMSummary(llm_summary)
+        //   generateLLMSummary(llm_summary)
 
           const llm_satisfaction = {
             // chat_message: "Was customer satisfied with agent information, only answer in yes or no and then give an explanation. Generate the response in the language the agent and customer are communicating",
@@ -417,21 +417,21 @@ function App() {
                 conversation: apiResponse,
                 };
           
-            generateLLMSentiment(llm_sentiment)
+            // generateLLMSentiment(llm_sentiment)
 
             const llm_turnover = {
                 chat_message: "What are the changes that this customer will turn into paying customer or this customer will come back, Output should be less than 10 words",
                 conversation: apiResponse,
                 };
             
-            generateLLMTurnover(llm_turnover)
+            // generateLLMTurnover(llm_turnover)
             
             const llm_topic = {
                 chat_message: "what is the conversation topic between speakers? Output should be less than 10 words",
                 conversation: apiResponse,
                 };
 
-            generateLLMTopic(llm_topic)
+            // generateLLMTopic(llm_topic)
 
         //   console.log("API Response:", response.data.response.transcript);
           })
@@ -604,23 +604,25 @@ async function uiReportGeneration(e: any) {
           }
           </form>
 
-          {/* <p className="mt-10 text-lg font-medium realtive">You can select following audio files : </p>
+          {/* <p className="mt-20 text-lg font-medium realtive">You can select following audio files : </p>
 
-          <div className="flex flex-col md:flex-row items-center justify-center">
-              <div className="md:mr-5 mr-0 justify-center flex-col flex mt-10">
-                  <p className="mt-10 text-center mb-2">English</p>
-                  <audio controls className='block max-w-lg'>
-                      <source src={filebase64} />
+          <div className="flex flex-col md:flex-row items-center justify-center mt-16">
+              <div className="md:mr-5 mr-0 justify-center flex-col flex">
+                  <audio controls >
+                      <source src={audio_file} />
                   </audio>
-                  <button className="mt-4 ">Use this</button>
+                  <div className='flex items-center justify-center sm:mb-0 mb-6'>
+                    <button className="mt-6 rounded-xl border-2 bg-[#333] px-3 py-2 text-center font-medium text-white duration-200 hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto">Use this</button>
+                  </div>
               </div>
               
-              <div className="justify-center flex-col flex mt-10">
-                  <p className="mt-10 text-center mb-2">Spanish</p>
+              <div className="justify-center flex-col flex ">
                   <audio controls className='block max-w-lg'>
                       <source src={filebase64} />
                   </audio>
-                  <button className="mt-4">Use this</button>
+                  <div className='flex items-center justify-center'>
+                    <button className="mt-6 rounded-xl border-2 bg-[#333] px-3 py-2 text-center font-medium text-white duration-200 hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto">Use this</button>
+                  </div>
               </div>
           </div> */}
         </div>
@@ -729,25 +731,11 @@ async function uiReportGeneration(e: any) {
                                         Customer Satisfaction
                                 </button>
 
-                                <button 
-                                    className="text-gray-900 md:mb-0 mb-2 bg-white rounded-lg border border-blue-200 py-1 px-2 hover:bg-gray-100 hover:text-blue-500 focus:ring-4 focus:ring-gray-200 mr-4 max-w-fit"
-                                    onClick={(e) => {
-                                        const llmData = {
-                                        // chat_message: "Give me a proper report on what was the sentiment of customer and agent",
-                                        chat_message: "what is the sentiment of the customer in this conversation, what is the sentiment of agent? and what is overall sentiment? Output should be less than 10 words",
-                                        conversation: apiResponse,
-                                        };
-                                        llmRequestResponse(llmData);
-                                    }}
-                                    >
-                                        Conversation Sentiment
-                                </button>
-
                             </div>
 
                             <div className="flex md:mt-3 md:flex-row flex-col text-sm font-medium">
                                 {/* <h1 className="mr-4 mt-1 text-blue-500 md:mb-0 mb-2">Suggestions: </h1> */}
-                                <button 
+                                {/* <button 
                                     className="text-gray-900 md:mb-0 mb-2 bg-white rounded-lg border border-blue-200 py-1 px-2 hover:bg-gray-100 hover:text-blue-500 focus:ring-4 focus:ring-gray-200 mr-4 max-w-fit"
                                     onClick={(e) => {
                                         const llmData = {
@@ -759,6 +747,20 @@ async function uiReportGeneration(e: any) {
                                     }}
                                     >
                                         Customer turnover chances
+                                </button> */}
+
+                                <button 
+                                    className="text-gray-900 md:mb-0 mb-2 bg-white rounded-lg border border-blue-200 py-1 px-2 hover:bg-gray-100 hover:text-blue-500 focus:ring-4 focus:ring-gray-200 mr-4 max-w-fit"
+                                    onClick={(e) => {
+                                        const llmData = {
+                                        // chat_message: "Give me a proper report on what was the sentiment of customer and agent",
+                                        chat_message: "extract the important conversation highlights, as well as important key points from the conversation",
+                                        conversation: apiResponse,
+                                        };
+                                        llmRequestResponse(llmData);
+                                    }}
+                                    >
+                                        Conversation Highlight
                                 </button>
 
                                 <button 
@@ -793,7 +795,7 @@ async function uiReportGeneration(e: any) {
             </div>
         }
 
-        { !uploadUi  && apiResponse && !uiSummaryGeneratorBool && generateSummary && generateSatisfaction && generateSentiment && generateTurnover && generateTopic &&
+        { uploadUi  && !apiResponse && !uiSummaryGeneratorBool && generateSummary && generateSatisfaction && generateSentiment && generateTurnover && generateTopic &&
             <div>
                 <button onClick={uiReportGeneration} className="mt-40 inline-flex items-center justify-center rounded-xl border-2 bg-[#6a32ee] px-6 py-3 text-center font-medium text-white duration-200 hover:border-black hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto">
                     Generate Report

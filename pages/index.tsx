@@ -19,6 +19,8 @@ import {
   ReactCompareSliderImage,
 } from "react-compare-slider";
 
+import Solutions2 from "../components/Solutions2";
+
 const Home: NextPage = () => {
   return (
     <div className="mx-auto flex max-w-full flex-col items-center justify-center py-2">
@@ -37,16 +39,16 @@ const Home: NextPage = () => {
       </svg>
 
       <Header />
-      <main className="mt-10 grid max-w-6xl gap-10 px-4 sm:ml-40 sm:mt-16 sm:grid-cols-2">
+      <main className="mt-10 grid max-w-6xl gap-10 px-4 sm:ml-40 sm:mt-10 sm:grid-cols-2">
         <div className="mt-10 sm:mt-16">
-          <Badge text={"Check out our GenAI solution for Contact Center"} />
-          <h1 className="font-display mx-auto max-w-4xl text-4xl font-bold tracking-normal text-slate-900 sm:text-5xl">
+          {/* <Badge text={"Try our GenAI solution for Contact Center"} /> */}
+          <h1 className="font-display mx-auto max-w-4xl text-3xl font-bold text-center tracking-normal text-slate-900 sm:text-6xl">
             <span className="relative whitespace-nowrap text-[#333]">
               <span className="relative mr-2">Improve your Contact</span>
             </span>
           </h1>
 
-          <h1 className="font-display mx-auto lg:mt-4 max-w-4xl text-4xl font-bold tracking-normal text-[#333] sm:mt-2 sm:text-5xl">
+          <h1 className="font-display relative whitespace-nowrap text-center mx-auto lg:mt-4 max-w-4xl text-3xl font-bold tracking-normal text-[#333] sm:mt-2 sm:text-6xl">
           Center experience
           </h1>
 
@@ -59,21 +61,40 @@ const Home: NextPage = () => {
         </div> 
 
           <div className="flex space-x-4">
-            <Link
-              className="mt-7 inline-flex items-center justify-center rounded-xl border-2 bg-[#333] px-6 py-3 text-center font-medium text-white duration-200 hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto"
+
+            <div className="relative inline-flex group mt-6">
+                <div
+                    className="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt">
+                </div>
+                <a href="/playground" title="Get quote now"
+                    className="relative inline-flex items-center justify-center px-6 py-3 text-base font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+                    role="button">Try it for yourself
+                </a>
+            </div>
+
+            <div className="relative inline-flex group mt-6">
+                <a href="https://tally.so/r/m6e6EA" target="_blank"
+              rel="noopener noreferrer" title="Get quote now"
+                    className="relative inline-flex items-center justify-center px-6 py-3 text-base font-bold text-white transition-all duration-200 bg-[#6a32ee] font-pj rounded-xl focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 hover:border-black hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto"
+                    role="button">Contact Us
+                </a>
+            </div>
+
+            {/* <Link
+              className="mt-7 inline-flex items-center justify-center rounded-xl border-2 bg-[#6a32ee] px-6 py-3 text-center font-medium text-white duration-200 hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto"
               href="https://tally.so/r/m6e6EA"
               target="_blank"
               rel="noopener noreferrer"
             >
               Contact Us
-            </Link>
+            </Link> */}
 
-            <Link
+            {/* <Link
               className="mt-7 inline-flex items-center justify-center rounded-xl border-2 bg-[#6a32ee] px-6 py-3 text-center font-medium text-white duration-200 hover:border-black hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto"
               href="/playground"
             >
-              Try demo
-            </Link>
+              Try it for yourself
+            </Link> */}
           </div>
 
           {/* <li className="mt-5 ml-2">commercial use &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; •  GDPR compliance  </li> */}
@@ -96,6 +117,7 @@ const Home: NextPage = () => {
 
       {/* <Testimonials /> */}
       <Datasets />
+      {/* <Solutions2 /> */}
       {/* <Features1/> */}
       {/* <Features2 /> */}
       {/* <Solutions /> */}
