@@ -12,7 +12,8 @@ import Solutions from "../components/Solutions";
 import TabsTest from "../components/TabsTest";
 import Features from "../components/Features";
 import Features1 from "../components/Features1";
-
+import Features2 from "../components/Features2";
+import { Badge } from "../components/Badge";
 import {
   ReactCompareSlider,
   ReactCompareSliderImage,
@@ -38,17 +39,18 @@ const Home: NextPage = () => {
       <Header />
       <main className="mt-10 grid max-w-6xl gap-10 px-4 sm:ml-40 sm:mt-16 sm:grid-cols-2">
         <div className="mt-10 sm:mt-16">
+          <Badge text={"Check out our GenAI solution for Contact Center"} />
           <h1 className="font-display mx-auto max-w-4xl text-4xl font-bold tracking-normal text-slate-900 sm:text-5xl">
             <span className="relative whitespace-nowrap text-[#333]">
-              <span className="relative mr-2">Contact Center AI</span>
+              <span className="relative mr-2">Improve your Contact</span>
             </span>
           </h1>
 
-          {/* <h1 className="font-display mx-auto max-w-4xl text-4xl font-bold tracking-normal text-[#333] sm:mt-2 sm:text-5xl">
-            Synthetic data
-          </h1> */}
+          <h1 className="font-display mx-auto lg:mt-4 max-w-4xl text-4xl font-bold tracking-normal text-[#333] sm:mt-2 sm:text-5xl">
+          Center experience
+          </h1>
 
-          <p className="mx-auto mt-5 max-w-xl text-xl leading-7 text-[#333] sm:mt-5 whitespace-wrap">
+          <p className="mx-auto mt-5 max-w-xl text-center md:text-left text-xl leading-7 text-[#333] sm:mt-5 whitespace-wrap">
           {/* Transform contact center customer experience with generative AI. */}
           Turn your conversations into actional insights with the help of Generative AI.
           </p>
@@ -95,6 +97,7 @@ const Home: NextPage = () => {
       {/* <Testimonials /> */}
       <Datasets />
       {/* <Features1/> */}
+      {/* <Features2 /> */}
       {/* <Solutions /> */}
       {/* <TabsTest /> */}
       {/* <Features  /> */}

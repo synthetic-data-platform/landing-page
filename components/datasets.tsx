@@ -41,8 +41,8 @@ export default function datasets(){
                             <div className="flex flex-col justify-between rounded-3xl bg-white p-8 shadow-xl ring-1 ring-gray-900/10 sm:p-10">
                                 <div>
                                 {/* <h3 id="tier-hobby" className="text-base font-semibold leading-7 text-indigo-600">Hobby</h3> */}
-                                <div className="mt-4 flex items-baseline gap-x-2">
-                                    <span className="text-2xl font-bold tracking-tight text-gray-900">Summarization</span>
+                                <div className="flex items-baseline gap-x-2">
+                                    <span className="text-2xl font-semibold tracking-tight text-gray-900">Summarization</span>
                                     {/* <span className="text-base font-semibold leading-7 text-gray-600">/month</span> */}
                                 </div>
                                 <p className="mt-6 text-base leading-7 text-left text-gray-600">Transcript summarization can summarize text in a transcript into points to remember by.</p>
@@ -54,8 +54,8 @@ export default function datasets(){
                             <div className="flex flex-col justify-between rounded-3xl bg-white p-8 shadow-xl ring-1 ring-gray-900/10 sm:p-10">
                                 <div>
                                 {/* <h3 id="tier-hobby" className="text-base font-semibold leading-7 text-indigo-600">Hobby</h3> */}
-                                <div className="mt-4 flex items-baseline gap-x-2">
-                                    <span className="text-2xl font-bold tracking-tight text-gray-900">Sentiment Analysis</span>
+                                <div className="flex items-baseline gap-x-2">
+                                    <span className="text-2xl font-semibold tracking-tight text-gray-900">Sentiment Analysis</span>
                                     {/* <span className="text-base font-semibold leading-7 text-gray-600">/month</span> */}
                                 </div>
                                 <p className="mt-6 text-base text-left leading-7 text-gray-600">Sentiment Analysis can help detect emotional value in conversations, by retrieving positive, negative, and neutral statements in the transcript.</p>
@@ -66,8 +66,8 @@ export default function datasets(){
                             <div className="flex flex-col justify-between rounded-3xl bg-white p-8 shadow-xl ring-1 ring-gray-900/10 sm:p-10">
                                 <div>
                                 {/* <h3 id="tier-team" className="text-base font-semibold leading-7 text-indigo-600">Team</h3> */}
-                                <div className="mt-4 flex items-baseline gap-x-2">
-                                    <span className="text-2xl font-bold tracking-tight text-gray-900">Topic Extraction</span>
+                                <div className="flex items-baseline gap-x-2">
+                                    <span className="text-2xl font-semibold tracking-tight text-gray-900">Topic Extraction</span>
                                     {/* <span className="text-base font-semibold leading-7 text-gray-600">/month</span> */}
                                 </div>
                                 <p className="mt-6 text-base text-left leading-7 text-gray-600">Extract the conversation topic discussed between agent and customer.</p>
@@ -79,8 +79,8 @@ export default function datasets(){
                             <div className="flex flex-col justify-between rounded-3xl bg-white p-8 shadow-xl ring-1 ring-gray-900/10 sm:p-10">
                                 <div>
                                 {/* <h3 id="tier-hobby" className="text-base font-semibold leading-7 text-indigo-600">Hobby</h3> */}
-                                <div className="mt-4 flex items-baseline gap-x-2">
-                                    <span className="text-2xl font-bold tracking-tight text-gray-900">Customer Satisfaction</span>
+                                <div className="flex items-baseline gap-x-2">
+                                    <span className="text-2xl font-semibold tracking-tight text-gray-900">Customer Satisfaction</span>
                                     {/* <span className="text-base font-semibold leading-7 text-gray-600">/month</span> */}
                                 </div>
                                 <p className="mt-6 text-base leading-7 text-left text-gray-600">Check wether customer was satisfied or not by agent</p>
@@ -92,11 +92,24 @@ export default function datasets(){
                             <div className="flex flex-col justify-between rounded-3xl bg-white p-8 shadow-xl ring-1 ring-gray-900/10 sm:p-10">
                                 <div>
                                 {/* <h3 id="tier-hobby" className="text-base font-semibold leading-7 text-indigo-600">Hobby</h3> */}
-                                <div className="mt-4 flex items-baseline gap-x-2">
-                                    <span className="text-2xl font-bold tracking-tight text-gray-900">Customer Turnover chances</span>
+                                <div className="flex items-baseline gap-x-2">
+                                    <span className="text-2xl font-semibold tracking-tight text-gray-900">Customer Turnover chances</span>
                                     {/* <span className="text-base font-semibold leading-7 text-gray-600">/month</span> */}
                                 </div>
                                 <p className="mt-6 text-base leading-7 text-left text-gray-600">Determine wether a customer can turn into paying customer or not.</p>
+                                
+                                </div>
+                                {/* <a href="#" aria-describedby="tier-hobby" className="mt-8 block rounded-md bg-indigo-600 px-3.5 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started today</a> */}
+                            </div>
+
+                            <div className="flex flex-col justify-between rounded-3xl bg-white p-8 shadow-xl ring-1 ring-gray-900/10 sm:p-8">
+                                <div>
+                                {/* <h3 id="tier-hobby" className="text-base font-semibold leading-7 text-indigo-600">Hobby</h3> */}
+                                <div className="flex items-baseline gap-x-2">
+                                    <span className="text-2xl font-semibold tracking-tight text-gray-900">Custom Solution</span>
+                                    {/* <span className="text-base font-semibold leading-7 text-gray-600">/month</span> */}
+                                </div>
+                                <p className="mt-6 text-base leading-7 text-left text-gray-600">You can configure custom solution that your contact center needs.</p>
                                 
                                 </div>
                                 {/* <a href="#" aria-describedby="tier-hobby" className="mt-8 block rounded-md bg-indigo-600 px-3.5 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started today</a> */}
