@@ -72,7 +72,7 @@ const Home: NextPage = () => {
               className="mt-7 inline-flex items-center justify-center rounded-xl border-2 bg-[#6a32ee] px-6 py-3 text-center font-medium text-white duration-200 hover:border-black hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto"
               href="/playground"
             >
-              Playground
+              Try demo
             </Link>
           </div>
 
@@ -101,7 +101,7 @@ const Home: NextPage = () => {
       {/* <Solutions /> */}
       {/* <TabsTest /> */}
       {/* <Features  /> */}
-      {/* <CallToAction /> */}
+      <CallToAction />
       <Footer />
     </div>
   );
