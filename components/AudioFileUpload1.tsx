@@ -406,13 +406,14 @@ function App() {
 
           const llm_satisfaction = {
             // chat_message: "Was customer satisfied with agent information, only answer in yes or no and then give an explanation. Generate the response in the language the agent and customer are communicating",
-            chat_message: "Was customer satisfied with agent information",
+            chat_message: "is customer satisfied in this conversation",
             conversation: transcript,
             };
             generateLLMSatisfaction(llm_satisfaction)
 
             const llm_sentiment = {
-                chat_message: "what is the entire conversation sentiment? what is the agent sentiment? what is the customer sentiment?",
+                // chat_message: "what is the entire conversation sentiment? what is the agent sentiment? what is the customer sentiment?",
+                chat_message: "what is the sentiment of the customer in this conversation, what is the sentiment of agent? and what is overall sentiment? Output should be less than 10 words",
                 conversation: apiResponse,
                 };
           
