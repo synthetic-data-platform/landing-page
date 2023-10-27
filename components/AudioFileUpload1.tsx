@@ -420,14 +420,14 @@ function App() {
             generateLLMSentiment(llm_sentiment)
 
             const llm_turnover = {
-                chat_message: "What are the changes that this customer will turn into paying customer or this customer will come back",
+                chat_message: "What are the changes that this customer will turn into paying customer or this customer will come back, Output should be less than 10 words",
                 conversation: apiResponse,
                 };
             
             generateLLMTurnover(llm_turnover)
             
             const llm_topic = {
-                chat_message: "what is the conversation topic between speakers?",
+                chat_message: "what is the conversation topic between speakers? Output should be less than 10 words",
                 conversation: apiResponse,
                 };
 
@@ -720,7 +720,7 @@ async function uiReportGeneration(e: any) {
                                     className="text-gray-900 md:mb-0 mb-2 bg-white rounded-lg border border-blue-200 py-1 px-2 hover:bg-gray-100 hover:text-blue-500 focus:ring-4 focus:ring-gray-200 mr-4 max-w-fit"
                                     onClick={(e) => {
                                         const llmData = {
-                                        chat_message: "Was customer satisfied with agent information, only answer in yes or no and then give an explanation. Generate the response in the language the agent and customer are communicating",
+                                        chat_message: "Was customer satisfied with agent information, only answer in yes or no and then give an explanation. Generate the response in the language the agent and customer are communicating. Output should be less than 10 words",
                                         conversation: apiResponse,
                                         };
                                         llmRequestResponse(llmData);
@@ -734,7 +734,7 @@ async function uiReportGeneration(e: any) {
                                     onClick={(e) => {
                                         const llmData = {
                                         // chat_message: "Give me a proper report on what was the sentiment of customer and agent",
-                                        chat_message: "what is the entire conversation sentiment? what is the agent sentiment? what is the customer sentiment?",
+                                        chat_message: "what is the sentiment of the customer in this conversation, what is the sentiment of agent? and what is overall sentiment? Output should be less than 10 words",
                                         conversation: apiResponse,
                                         };
                                         llmRequestResponse(llmData);
@@ -751,7 +751,8 @@ async function uiReportGeneration(e: any) {
                                     className="text-gray-900 md:mb-0 mb-2 bg-white rounded-lg border border-blue-200 py-1 px-2 hover:bg-gray-100 hover:text-blue-500 focus:ring-4 focus:ring-gray-200 mr-4 max-w-fit"
                                     onClick={(e) => {
                                         const llmData = {
-                                        chat_message: "What are the changes that this customer will turn into paying customer or this customer will come back",
+                                        chat_message: "What are the changes that this customer will turn into paying customer or this customer will come back, Output should be less than 10 words",
+                                        // chat_message: "what are the customer turnover chances in this conversation",
                                         conversation: apiResponse,
                                         };
                                         llmRequestResponse(llmData);
@@ -764,7 +765,7 @@ async function uiReportGeneration(e: any) {
                                     className="text-gray-900 md:mb-0 mb-2 bg-white rounded-lg border border-blue-200 py-1 px-2 hover:bg-gray-100 hover:text-blue-500 focus:ring-4 focus:ring-gray-200 mr-4 w-fit"
                                     onClick={(e) => {
                                         const llmData = {
-                                        chat_message: "what is the conversation topic between speakers?",
+                                        chat_message: "what is the conversation topic between speakers? Output should be less than 10 words",
                                         conversation: apiResponse,
                                         };
                                         llmRequestResponse(llmData);
