@@ -38,6 +38,21 @@ export default function datasets(){
                         <div className="-mt-80">
                         <div className="mx-auto max-w-full px-6 lg:px-8">
                             <div className="mx-auto grid max-w-md grid-cols-1 gap-8 lg:max-w-3xl lg:grid-cols-2 content-center ">
+                            
+                            
+                            <div className="flex flex-col justify-between rounded-xl bg-white p-4 shadow-sm ring-1 ring-gray-900/30 sm:p-5">
+                                <div>
+                                {/* <h3 id="tier-hobby" className="text-base font-semibold leading-7 text-indigo-600">Hobby</h3> */}
+                                <div className="flex items-baseline gap-x-2">
+                                    <span className="text-2xl font-semibold tracking-tight text-gray-900">Customer Satisfaction</span>
+                                    {/* <span className="text-base font-semibold leading-7 text-gray-600">/month</span> */}
+                                </div>
+                                <p className="mt-6 text-base leading-7 text-left text-gray-600">With Voxlab, now you can truely listen to your customers and analyze 100 % of your conversation.</p>
+                                
+                                </div>
+                                {/* <a href="#" aria-describedby="tier-hobby" className="mt-8 block rounded-md bg-indigo-600 px-3.5 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started today</a> */}
+                            </div>
+
                             <div className="flex flex-col justify-between rounded-xl bg-white p-4 shadow-sm ring-1 ring-gray-900/10 sm:p-5">
                                 <div>
                                 {/* <h3 id="tier-hobby" className="text-base font-semibold leading-7 text-indigo-600">Hobby</h3> */}
@@ -74,19 +89,6 @@ export default function datasets(){
                                     {/* <span className="text-base font-semibold leading-7 text-gray-600">/month</span> */}
                                 </div>
                                 <p className="mt-6 text-base leading-7 text-left text-gray-600">We will extract the important conversation highlights, as well as important key points from the conversation.</p>
-                                
-                                </div>
-                                {/* <a href="#" aria-describedby="tier-hobby" className="mt-8 block rounded-md bg-indigo-600 px-3.5 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started today</a> */}
-                            </div>
-
-                            <div className="flex flex-col justify-between rounded-xl bg-white p-4 shadow-sm ring-1 ring-gray-900/30 sm:p-5">
-                                <div>
-                                {/* <h3 id="tier-hobby" className="text-base font-semibold leading-7 text-indigo-600">Hobby</h3> */}
-                                <div className="flex items-baseline gap-x-2">
-                                    <span className="text-2xl font-semibold tracking-tight text-gray-900">Customer Satisfaction</span>
-                                    {/* <span className="text-base font-semibold leading-7 text-gray-600">/month</span> */}
-                                </div>
-                                <p className="mt-6 text-base leading-7 text-left text-gray-600">We can determine whether customer was satisfied with agent's help or not.</p>
                                 
                                 </div>
                                 {/* <a href="#" aria-describedby="tier-hobby" className="mt-8 block rounded-md bg-indigo-600 px-3.5 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started today</a> */}
