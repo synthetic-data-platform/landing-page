@@ -5,6 +5,9 @@ import { Transition } from '@headlessui/react'
 import Image from 'next/image'
 import FeaturesBg from '../public/features-bg.png'
 import FeaturesElement from '../public/features-element.png'
+import OnPrem from '../public/on-prem-1.png'
+
+// https://dev.to/estheragbaje/6-awesome-tools-that-turn-code-snippets-to-images-54fo
 
 export default function Solutions2() {
   
@@ -27,13 +30,14 @@ export default function Solutions2() {
       <div className="absolute inset-0 pointer-events-none mb-16" aria-hidden="true"></div>
       {/* <div className="absolute left-0 right-0 m-auto w-px p-px h-20 bg-gray-200 transform -translate-y-1/2"></div> */}
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 mt-40">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 mt-20">
         <div className="pt-12 md:pt-20">
 
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
-            <h1 className="h2 mb-4 text-5xl font-bold text-[#333]">Explore the solutions</h1>
-            <p className="text-xl text-[#333]">Improve Customer services with Generative AI, that understands your customer needs and interacts with your agents.</p>
+            <h1 className="h2 mb-4 text-2xl font-bold text-[#333]">On an enterprise-grade platform</h1>
+            <h1 className="h2 mb-4 text-5xl font-bold text-[#333] mt-10">Secure and private by design</h1>
+            <p className="text-xl text-[#333]">We are aware that your customer's share very sensitive information with your agents. Voxlab never stores any data neither we share it over the internet without advance redaction.</p>
           </div>
 
           {/* Section content */}
@@ -42,8 +46,8 @@ export default function Solutions2() {
             {/* Content */}
             <div className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-7 lg:col-span-6 md:mt-6" data-aos="fade-right">
               <div className="md:pr-4 lg:pr-12 xl:pr-16 mb-8">
-                <h3 className="h3 mb-3">Powerful suite of tools</h3>
-                <p className="text-xl text-gray-600">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa.</p>
+                {/* <h3 className="h3 text-3xl font-bold mb-3">Powerful suite of tools</h3> */}
+                {/* <p className="text-xl text-gray-600">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa.</p> */}
               </div>
               {/* Tabs buttons */}
               <div className="mb-8 md:mb-0">
@@ -53,7 +57,7 @@ export default function Solutions2() {
                   onClick={(e) => { e.preventDefault(); setTab(1); }}
                 >
                   <div>
-                    <div className="font-bold leading-snug tracking-tight mb-1">Building the Simple ecosystem</div>
+                    <div className="font-bold leading-snug tracking-tight mb-1">Deoply only on On-Premises</div>
                     <div className="text-gray-600">Take collaboration to the next level with security and administrative features built for teams.</div>
                   </div>
                   <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
@@ -114,8 +118,8 @@ export default function Solutions2() {
                     unmount={false}                     
                   >
                     <div className="relative inline-flex flex-col">
-                      <Image className="md:max-w-none mx-auto rounded" src={FeaturesBg} width={500} height="462" alt="Features bg" />
-                      <Image className="md:max-w-none absolute w-full left-0 transform animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />
+                      <Image className="md:max-w-none mx-auto rounded" src={OnPrem} width={500} height="500" alt="Features bg" />
+                      {/* <Image className="md:max-w-none absolute w-full left-0 transform animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} /> */}
                     </div>
                   </Transition>
                   {/* Item 2 */}

@@ -23,10 +23,10 @@ export default function Features1() {
             <p className="mt-6 text-base leading-7 text-gray-600">Voxlab is working towards giving contact center new and efficient way to satisfy their customers with Generative AI.</p>
         </div>
         <div className="mx-auto mt-16 flex max-w-2xl flex-col gap-8 lg:mx-0 lg:mt-20 lg:max-w-none lg:flex-row lg:items-end">
-            <div className="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-gray-200 p-8 sm:w-3/4 sm:max-w-md sm:flex-row-reverse sm:items-end lg:w-72 lg:max-w-none lg:flex-none lg:flex-col lg:items-start">
-            <p className="flex-none text-3xl font-bold tracking-tight text-gray-900">50% Time Save</p>
+            <div className="flex flex-col-reverse justify-between gap-x-16 gap-y-2 rounded-2xl bg-gray-200 p-8 sm:w-3/4 sm:max-w-md sm:flex-row-reverse sm:items-end lg:w-72 lg:max-w-none lg:flex-none lg:flex-col lg:items-start">
+            <p className="flex-none text-3xl font-bold tracking-tight text-gray-900">25% Time Save</p>
             <div className="sm:w-80 sm:shrink lg:w-auto lg:flex-none">
-                <p className="text-lg font-semibold tracking-tight text-gray-900">We can save your agent's time by 50%</p>
+                <p className="text-lg font-semibold tracking-tight text-gray-900">We can save your agent's time by 25%</p>
                 <p className="mt-2 text-base leading-7 text-gray-600">We will automatically generate summry as well as conversation highlights.</p>
             </div>
             </div>
