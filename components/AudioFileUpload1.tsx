@@ -59,6 +59,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import PdfGenerator from './PdfGenerator';
 import saveAs from 'file-saver';
 import { supabase } from '../libs/supabase'
+import CallToAction from './CallToAction-Playground';
 
 function App() {
   const [filebase64,setFileBase64] = useState<string>("")
@@ -655,7 +656,7 @@ async function uiReportGeneration(e: any) {
                     
                     <div>
                         {asrLoading && 
-                        <Skeleton count={10}/>
+                            <Skeleton count={10}/>
                         }
 
                         {apiResponse &&
@@ -793,6 +794,11 @@ async function uiReportGeneration(e: any) {
                     </div>
                 </div>
             </div>
+        }
+
+        {!uploadUi && apiResponse && 
+        
+            <CallToAction />
         }
 
         { uploadUi  && !apiResponse && !uiSummaryGeneratorBool && generateSummary && generateSatisfaction && generateSentiment && generateTurnover && generateTopic &&
