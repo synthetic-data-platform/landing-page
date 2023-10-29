@@ -60,6 +60,7 @@ import PdfGenerator from './PdfGenerator';
 import saveAs from 'file-saver';
 import { supabase } from '../libs/supabase'
 import CallToAction from './CallToAction-Playground';
+import AudioPlayer from './AudioPlayer';
 
 function App() {
   const [filebase64,setFileBase64] = useState<string>("")
@@ -80,6 +81,9 @@ function App() {
   const [fileTypeVariable, setFileTypeVariable] = useState<string | 'audio/mpeg'>("");
   const [fileExtensionVariable, setFileExtensionVariable] = useState<string | '.mp3'>("");
   const [uiSummaryGeneratorBool, setUiSummaryGeneratorBool] = useState(false);
+  const [playFromUrl, setPlayFromUrl] = useState(false);
+  const [audioUrlForPlayFromUrl, setAudioUrlForPlayFromUrl] = useState<string>("");
+
 //   const supabase_url = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
 //   const supabase_key = process.env.NEXT_PUBLIC_SUPABASE_KEY || ''
   
@@ -443,6 +447,33 @@ function App() {
 
   }
 
+  async function processFromUrl(url: string){
+    console.log(url)
+    setuploadUi(false);
+    setPlayFromUrl(true);
+    setAudioUrlForPlayFromUrl(url)
+
+    const formData = new FormData();
+    formData.append('audio_url', url)
+
+    if (process.env.NEXT_PUBLIC_ASR_URL){
+
+        const asr_url = process.env.NEXT_PUBLIC_ASR_URL;
+
+        await axios.post(asr_url, formData, {
+            headers: {
+            'Content-Type': 'multipart/form-data',
+            },
+        })
+          .then((response) => {
+          const transcript = response.data.response.transcript
+          setApiResponse(transcript);
+          setasrLoading(false);
+
+        })
+    }
+}
+
 // The Magic all happens here.
   function convertFileToBase(files: FileList|null) {
       if (files) {
@@ -556,6 +587,7 @@ async function uiReportGeneration(e: any) {
 }
 
 
+
   return (
     <div className="App mb-44">
       <header className="">
@@ -572,7 +604,7 @@ async function uiReportGeneration(e: any) {
                               <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
                           </svg>
                           <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">Click to upload</span></p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400">All audio file types. (Audio file should be 30 MB or less )</p>
+                          <p className="text-xs text-gray-500 dark:text-gray-400">All audio file types. (Audio file should be less than 30 MB )</p>
                       </div>
                       
                       <input type="file" id="dropzone-file" className="hidden" onChange={(e)=> convertFile(e.target.files)} />
@@ -605,27 +637,24 @@ async function uiReportGeneration(e: any) {
           }
           </form>
 
-          {/* <p className="mt-20 text-lg font-medium realtive">You can select following audio files : </p>
+          <p className="mt-20 text-lg font-medium realtive">You can select following audio files : </p>
 
           <div className="flex flex-col md:flex-row items-center justify-center mt-16">
               <div className="md:mr-5 mr-0 justify-center flex-col flex">
-                  <audio controls >
-                      <source src={audio_file} />
-                  </audio>
+                <AudioPlayer audioUrl='https://quelutgylzztkdaisfbh.supabase.co/storage/v1/object/sign/voxlab-blob/blob/conv1.mp3?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2b3hsYWItYmxvYi9ibG9iL2NvbnYxLm1wMyIsImlhdCI6MTY5ODU4OTQ0NywiZXhwIjoxNzMwMTI1NDQ3fQ.51L8icwJNO8ZKz1neHFHlFYrlhojeqc-D2WVcJbgwWs&t=2023-10-29T14%3A24%3A07.413Z' />
                   <div className='flex items-center justify-center sm:mb-0 mb-6'>
-                    <button className="mt-6 rounded-xl border-2 bg-[#333] px-3 py-2 text-center font-medium text-white duration-200 hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto">Use this</button>
+                    <button onClick={() => processFromUrl('https://quelutgylzztkdaisfbh.supabase.co/storage/v1/object/sign/voxlab-blob/blob/conv1.mp3?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2b3hsYWItYmxvYi9ibG9iL2NvbnYxLm1wMyIsImlhdCI6MTY5ODU4OTQ0NywiZXhwIjoxNzMwMTI1NDQ3fQ.51L8icwJNO8ZKz1neHFHlFYrlhojeqc-D2WVcJbgwWs&t=2023-10-29T14%3A24%3A07.413Z')} 
+                        className="mt-6 rounded-xl border-2 bg-[#333] px-3 py-2 text-center font-medium text-white duration-200 hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto">Use this</button>
                   </div>
               </div>
               
               <div className="justify-center flex-col flex ">
-                  <audio controls className='block max-w-lg'>
-                      <source src={filebase64} />
-                  </audio>
+                  <AudioPlayer audioUrl='https://quelutgylzztkdaisfbh.supabase.co/storage/v1/object/sign/voxlab-blob/blob/conv2.mp3?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2b3hsYWItYmxvYi9ibG9iL2NvbnYyLm1wMyIsImlhdCI6MTY5ODU4OTYxMiwiZXhwIjoxNzMwMTI1NjEyfQ.Y3vU87uMdf51xEidCvEH5ryAKZMyowysChXXpdN2aHs&t=2023-10-29T14%3A26%3A52.903Z' />
                   <div className='flex items-center justify-center'>
-                    <button className="mt-6 rounded-xl border-2 bg-[#333] px-3 py-2 text-center font-medium text-white duration-200 hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto">Use this</button>
+                    <button onClick={() => processFromUrl('https://quelutgylzztkdaisfbh.supabase.co/storage/v1/object/sign/voxlab-blob/blob/conv2.mp3?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2b3hsYWItYmxvYi9ibG9iL2NvbnYyLm1wMyIsImlhdCI6MTY5ODU4OTYxMiwiZXhwIjoxNzMwMTI1NjEyfQ.Y3vU87uMdf51xEidCvEH5ryAKZMyowysChXXpdN2aHs&t=2023-10-29T14%3A26%3A52.903Z')} className="mt-6 rounded-xl border-2 bg-[#333] px-3 py-2 text-center font-medium text-white duration-200 hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto">Use this</button>
                   </div>
               </div>
-          </div> */}
+          </div>
         </div>
         }
 
@@ -648,6 +677,15 @@ async function uiReportGeneration(e: any) {
             }
 
             </div>
+        }
+
+        { playFromUrl && 
+
+            <div className='flex items-center justify-center flex-col mb-20'>
+
+                <AudioPlayer audioUrl={audioUrlForPlayFromUrl} />
+            </div>
+
         }
 
         { !uploadUi &&
