@@ -659,7 +659,7 @@ async function uiReportGeneration(e: any) {
                         }
 
                         {apiResponse &&
-                        <div>
+                        <div className="max-h-[450px] overflow-y-auto ">
                             <h1 className="text-xl font-bold">ASR Transcript: </h1>
                             <p className='mt-5'></p>
                                 {formatTextWithLineBreaks(apiResponse).map((response, index) => 
