@@ -118,7 +118,7 @@ const Home: NextPage = () => {
       {/* <Testimonials /> */}
       <Datasets />
       {/* <Solutions2 /> */}
-      {/* <Features1/> */}
+      <Features1/>
       {/* <Features2 /> */}
       {/* <Solutions /> */}
       {/* <TabsTest /> */}
