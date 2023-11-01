@@ -30,7 +30,7 @@ export default function Features1() {
                 <p className="mt-2 text-base leading-7 text-gray-600">We will automatically generate summry as well as conversation highlights.</p>
             </div>
             </div>
-            <div className="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-gray-900 p-8 sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-sm lg:flex-auto lg:flex-col lg:items-start lg:gap-y-44">
+            <div className="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-gray-900 p-8 sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-sm lg:flex-auto lg:flex-col lg:items-start lg:gap-y-56">
             <p className="flex-none text-3xl font-bold tracking-tight text-white">100% CSAT</p>
             <div className="sm:w-80 sm:shrink lg:w-auto lg:flex-none">
                 <p className="text-lg font-semibold tracking-tight text-white">Voxlab can automatically collect CSAT scores on every call.</p>
