@@ -21,7 +21,7 @@ export default function Playground(){
                     {/* <h1 className="mb-4 text-3xl font-extrabold text-gray-900 sm:mt-40 mt-10 md:text-5xl lg:text-6xl">
                         <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Background Removal</span> Free to use.
                     </h1> */}
-                        <p className="text-sm font-semibold text-[#333] mb-4">
+                        <p className="text-base font-bold text-[#333] mb-4">
                             Introducing
                         </p>
 
